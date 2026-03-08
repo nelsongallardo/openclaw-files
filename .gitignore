@@ -1,0 +1,37 @@
+# Sensitive files
+openclaw.json
+openclaw.json.bak*
+openclaw.json.new
+credentials/
+identity/
+exec-approvals.json
+
+# Runtime state
+agents/
+telegram/
+delivery-queue/
+devices/
+subagents/
+logs/
+update-check.json
+cron/runs/
+media/
+canvas/
+
+# Skill caches
+workspace/skills/clawddocs/.cache/
+workspace/skills/clawddocs/.index/
+
+# Claude Code memory (separate from workspace memory)
+memory/
+
+# Workspace state files
+**/.openclaw/
+**/.clawhub/
+
+# Backup files
+*.bak
+*.bak.*
+
+# OS files
+.DS_Store

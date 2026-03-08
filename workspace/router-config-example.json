@@ -1,0 +1,31 @@
+{
+  "subagents": {
+    "coding": {
+      "model": "llamacpp/Qwen/Qwen3-14B-GGUF:Q4_K_M",
+      "thinking": "medium",
+      "allowedAgents": ["subagent-coding"],
+      "runTimeoutSeconds": 600
+    },
+    "writing": {
+      "model": "openrouter/z-ai/glm-4.7-flash",
+      "thinking": "low",
+      "allowedAgents": ["subagent-writing"],
+      "runTimeoutSeconds": 300
+    },
+    "research": {
+      "model": "openrouter/anthropic/claude-opus-4.6",
+      "thinking": "medium",
+      "allowedAgents": ["subagent-research"],
+      "runTimeoutSeconds": 900
+    }
+  },
+  "tools": {
+    "profile": "full",
+    "allow": ["*"],
+    "deny": ["exec.sandbox.dangerous"]
+  },
+  "sandbox": {
+    "mode": "all",
+    "workspaceAccess": "rw"
+  }
+}
