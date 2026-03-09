@@ -2,13 +2,29 @@
 
 ## Rules
 
-You MUST complete every task below. Keep it quick and concise.
-- If something needs a complex response or action, delegate it:
-
-```
-sessions_spawn task:"<describe what you found and what needs doing>" agentId:"main"
-```
+No narration. No commentary. If nothing to do, reply HEARTBEAT_OK.
 
 ## Tasks
 
-- Call web_fetch with url "https://www.infobae.com/america/" and extract the top 2 headlines from the result. Reply with ONLY the 2 headlines, nothing else. No HEARTBEAT_OK. Do not try other tools if web_fetch works — just use the result you get.
+### Trello Board: openclaw-todos (ID: L6w0xeNA)
+
+**If "InProgress" is empty:**
+- Get the top card from the "ToDO" list.
+- Move it to "InProgress".
+- Update TRELLO_PROGRESS.md: set Card name, Status to "started", clear the Log.
+- Delegate: sessions_spawn task:"New task from Trello: <card name> - <card description>. Track your progress in workspace/TRELLO_PROGRESS.md — update the Status and append to the Log as you work." agentId:"main"
+
+**If "InProgress" has a card:**
+- Read workspace/TRELLO_PROGRESS.md.
+- If Status says "done":
+  - Move the Trello card to "Done".
+  - Let me know the task is complete.
+  - Reset TRELLO_PROGRESS.md to idle.
+- If Status says "blocked" or the Log has a question for me:
+  - Ask me the question in Telegram.
+  - After I reply, update the Log with my answer.
+  - Delegate: sessions_spawn task:"Continue Trello task: <card name>. Check workspace/TRELLO_PROGRESS.md for context and my latest answer. Update the doc as you work." agentId:"main"
+- If Status says "in progress" (work ongoing, no blockers):
+  - Delegate: sessions_spawn task:"Follow up on Trello task: <card name>. Check workspace/TRELLO_PROGRESS.md for context. Continue working and update the doc." agentId:"main"
+
+**If both lists are empty:** reply HEARTBEAT_OK.

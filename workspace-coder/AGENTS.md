@@ -47,6 +47,7 @@ bash pty:true workdir:~/Projects/myproject command:"codex exec --full-auto 'Your
 - **Monitor background tasks** — `process action:log sessionId:XXX`
 - **Auto-notify on completion** — append: `When completely finished, run: openclaw system event --text "Done: [summary]" --mode now`
 - **If an agent fails, don't take over** — respawn it or ask the user
+- **Always create a PR** — after all code changes are committed, the coding agent must create a pull request. Append to every task: `After committing, create a PR with a clear title and description.`
 
 ### Background Task Workflow
 
