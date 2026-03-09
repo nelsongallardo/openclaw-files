@@ -2,8 +2,7 @@
 
 ## Rules
 
-Do the checks below yourself. Keep it quick and concise.
-- If everything is clear, reply HEARTBEAT_OK.
+You MUST complete every task below. Keep it quick and concise.
 - If something needs a complex response or action, delegate it:
 
 ```
@@ -12,6 +11,4 @@ sessions_spawn task:"<describe what you found and what needs doing>" agentId:"ma
 
 ## Tasks
 
-- If it's daytime, do a lightweight check-in if nothing else is pending.
-- If a task is blocked, write down what is missing and ask Nelson next time.
-- Check Trello for any pending items.
+- Call web_fetch with url "https://www.infobae.com/america/" and extract the top 2 headlines from the result. Reply with ONLY the 2 headlines, nothing else. No HEARTBEAT_OK. Do not try other tools if web_fetch works — just use the result you get.
