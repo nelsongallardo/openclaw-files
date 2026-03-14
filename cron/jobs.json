@@ -1,4 +1,131 @@
 {
   "version": 1,
-  "jobs": []
+  "jobs": [
+    {
+      "id": "420feb8f-112c-4203-863e-818b4771d552",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:8462098656",
+      "name": "reminder-read-reddit-wednesday",
+      "enabled": false,
+      "deleteAfterRun": true,
+      "createdAtMs": 1773083489976,
+      "updatedAtMs": 1773259200012,
+      "schedule": {
+        "at": "2026-03-11T20:00:00.000Z",
+        "kind": "at"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "💡 Reminder: Time to read this Reddit post from the OpenClaw community: https://www.reddit.com/r/openclaw/s/s5qok4Sdo5"
+      },
+      "delivery": {
+        "mode": "none"
+      },
+      "state": {
+        "lastRunAtMs": 1773259200008,
+        "lastRunStatus": "skipped",
+        "lastStatus": "skipped",
+        "lastDurationMs": 4,
+        "lastError": "disabled",
+        "lastDeliveryStatus": "not-requested",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "21e31900-54dc-48dd-b204-350a44d49879",
+      "agentId": "security",
+      "sessionKey": "agent:security:telegram:direct:8462098656",
+      "name": "security-audit-lulu-logs",
+      "enabled": true,
+      "createdAtMs": 1773083859141,
+      "updatedAtMs": 1773485489416,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 2 * * *"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run this command: sh ~/.openclaw/workspace-security/scripts/audit-lulu.sh\n\nRead the output. Then reply with your security report as a normal message.\n\nDO NOT use the write tool. DO NOT use the edit tool. DO NOT call any tools to write files. Just reply directly with plain text.\nNEVER say HEARTBEAT_OK anywhere in your reply. ALWAYS send the full report below.\n\nKNOWN SAFE TRAFFIC (ignore these):\n- Google/Chrome on ports 443, 5228\n- Discord on port 443 to 162.159.x.x\n- Telegram on port 443 to 149.154.x.x\n- node (OpenClaw) on port 443\n- Apple services (17.x.x.x) on ports 443, 5223\n- Ollama, LuLu, mDNSResponder, trustd, ocspd, apsd, cloudd\n- localhost connections (127.0.0.1)\n\nFLAG AS SUSPICIOUS:\n- Unknown processes making outbound connections\n- Connections to unusual ports\n- Connections to Tor exit nodes or known-bad IPs\n\nALWAYS reply in this exact format:\n\nSecurity Audit Report — 2026-03-09\n\nNew outbound IPs detected:\n- (list any non-standard IPs with process and port, or 'none')\n\nSuspicious activity:\n- (describe anything unusual, or 'none')\n\nRisk level: None/Low/Medium/High/Critical\n\nRecommended actions:\n- (what to do, or 'none needed')",
+        "lightContext": false,
+        "timeoutSeconds": 900
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "-1003835107764:topic:2"
+      },
+      "state": {
+        "nextRunAtMs": 1773541800000,
+        "lastRunAtMs": 1773485485323,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 4093,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0,
+        "lastDelivered": true
+      }
+    },
+    {
+      "id": "45b65e0c-c569-46b1-b25a-91e53b0d36f1",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:8462098656",
+      "name": "Pick up medicine and return clothes",
+      "enabled": false,
+      "deleteAfterRun": true,
+      "createdAtMs": 1773409546219,
+      "updatedAtMs": 1773413100012,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-03-13T14:45:00.000Z"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "Reminder: pick up medicine and return clothes"
+      },
+      "state": {
+        "lastRunAtMs": 1773413100010,
+        "lastRunStatus": "skipped",
+        "lastStatus": "skipped",
+        "lastDurationMs": 2,
+        "lastError": "disabled",
+        "lastDeliveryStatus": "not-requested",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "a3637c05-9b4d-4b74-8763-45d1fea804c5",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:8462098656",
+      "name": "Medicine & clothes reminder test",
+      "enabled": false,
+      "deleteAfterRun": true,
+      "createdAtMs": 1773413792886,
+      "updatedAtMs": 1773414120012,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-03-13T15:02:00.000Z"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "Reminder test: pick up medicine and return clothes"
+      },
+      "state": {
+        "lastRunAtMs": 1773414120012,
+        "lastRunStatus": "skipped",
+        "lastStatus": "skipped",
+        "lastDurationMs": 0,
+        "lastError": "disabled",
+        "lastDeliveryStatus": "not-requested",
+        "consecutiveErrors": 0
+      }
+    }
+  ]
 }

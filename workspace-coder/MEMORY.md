@@ -1,9 +1,19 @@
 # MEMORY.md - Core Operating Principles
 
-## Coding Workflow (Updated 2026-03-07)
+## ⚠️ CRITICAL: NEVER EDIT CODE DIRECTLY (2026-03-10)
+**RULE VIOLATION LOGGED**: I edited db.py and ingest.py to fix schema issues instead of delegating to Claude Code.
+- Even "quick fixes" → Claude Code
+- Even "obvious" bugs → Claude Code
+- Even just one line → Claude Code
+- NO EXCEPTIONS
+
+When code breaks: spawn Claude, don't fix it yourself.
+
+## Coding Workflow (Updated 2026-03-10)
 1. **Always Delegate**:
-   - All code generation → coding-agent (Claude/Codex)
+   - ALL code edits → coding-agent (Claude/Codex)
    - Never write directly (except config/memory files)
+   - Never "just fix one line"
 2. **Auto-Organization**:
    - Go → ~/projects/go-project/
    - Python → ~/project/

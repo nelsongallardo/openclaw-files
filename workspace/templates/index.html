@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenClaw Observability Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .log-entry { padding: 8px; border-bottom: 1px solid #eee; }
+        .log-entry:nth-child(odd) { background: #f9f9f9; }
+        #search { padding: 8px; width: 300px; margin-bottom: 20px; }
+        .stats { margin: 20px 0; padding: 10px; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>OpenClaw Tool Call Monitor</h1>
+    
+    <div class="stats">
+        <h3>Stats</h3>
+        <div id="stats-container">Loading...</div>
+    </div>
+    
+    <input type="text" id="search" placeholder="Search tools...">
+    <div id="logs-container">
+        {% for log in logs %}
+            <div class="log-entry">
+                <strong>{{ log.tool }}</strong> at {{ log.timestamp|datetime }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        // Auto-refresh logs every 5 seconds
+        function refreshLogs() {
+            fetch('/stats')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('stats-container').innerHTML = `
+                        <p>Total calls: ${data.total_calls}</p>
+                        <p>Recent activity: ${data.recent_activity.length} calls in last 5 minutes</p>
+                    `;
+                });
+                
+            fetch('/search?q=' + document.getElementById('search').value)
+                .then(response => response.json())
+                .then(logs => {
+                    const container = document.getElementById('logs-container');
+                    container.innerHTML = logs.map(log => 
+                        `<div class="log-entry">
+                            <strong>${log.tool}</strong> at ${new Date(log.timestamp * 1000).toLocaleString()}
+                        </div>`
+                    ).join('');
+                });
+        }
+        
+        document.getElementById('search').addEventListener('input', refreshLogs);
+        setInterval(refreshLogs, 5000);
+        refreshLogs();
+    </script>
+</body>
+</html>
