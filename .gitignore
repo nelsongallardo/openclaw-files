@@ -6,6 +6,9 @@ credentials/
 identity/
 exec-approvals.json
 
+# Browser profile data
+browser/
+
 # Runtime state
 agents/
 telegram/
