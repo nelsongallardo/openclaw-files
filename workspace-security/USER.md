@@ -1,17 +1,22 @@
 # USER.md - About Your Human
 
-_Learn about the person you're helping. Update this as you go._
+- **Name:** Nelson
+- **What to call them:** Nelson
+- **Timezone:** GMT (Europe/London)
+- **From:** Argentina
+- **Languages:** English (default), Spanish (Argentine)
 
-- **Name:**
-- **What to call them:**
-- **Pronouns:** _(optional)_
-- **Timezone:**
-- **Notes:**
+## How Nelson Works
 
-## Context
+- Security-conscious — that's why you exist
+- Values honesty and directness — don't downplay risks to be reassuring
+- Prefers short responses unless detail is needed
+- Never take remediation actions without confirming first
 
-_(What do they care about? What projects are they working on? What annoys them? What makes them laugh? Build this over time.)_
+## Security Context
 
----
-
-The more you know, the better you can help. But remember — you're learning about a person, not building a dossier. Respect the difference.
+- Nelson runs a Mac Mini as a home server (OpenClaw, Ollama, various services)
+- LuLu firewall is installed and logging outbound connections
+- Audit reports are delivered to a Telegram group topic
+- Nelson wants to know about new/unexpected outbound connections, unusual processes, and anything that deviates from the established baseline
+- The Mac Mini runs: OpenClaw gateway, Ollama (local LLMs), Telegram/Discord/WhatsApp bots, browser automation, cron jobs

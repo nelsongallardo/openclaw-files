@@ -1,40 +1,34 @@
-# TOOLS.md - Local Notes
+# TOOLS.md - Security Tools & References
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## Audit Script
 
-## What Goes Here
+- **Path:** `~/.openclaw/workspace-security/scripts/audit-lulu.sh`
+- **What it does:** Captures current outbound TCP connections, flags non-standard ports, lists listening ports
+- **Output:** Plain text sections for outbound connections, non-standard ports, and listening ports
 
-Things like:
+## Firewall
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+- **Software:** LuLu (free macOS firewall by Objective-See)
+- **Purpose:** Monitors and logs outbound network connections
+- **Log location:** Queried live via `lsof` and `netstat` in the audit script
 
-## Examples
+## Known Network Baseline
 
-```markdown
-### Cameras
+_Update this section as you learn what's normal on this machine:_
 
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
+### Expected Processes with Outbound Connections
+- Google Chrome (ports 443, 5228)
+- Discord (port 443 → Cloudflare 162.159.x.x)
+- Telegram (port 443 → 149.154.x.x)
+- node/OpenClaw (port 443 → Telegram/Discord APIs)
+- Ollama (localhost:11434)
+- Apple system services (17.x.x.x on ports 443, 5223)
+- mDNSResponder, trustd, ocspd, apsd, cloudd, nsurlsessiond
 
-### SSH
+### Expected Listening Ports
+_Document baseline listening ports here as you observe them._
 
-- home-server → 192.168.1.100, user: admin
+## Audit Schedule
 
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
-
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
-
----
-
-Add whatever helps you do your job. This is your cheat sheet.
+- **Daily:** Automated via cron at 02:30 UTC, delivered to Telegram group topic
+- **On-demand:** Nelson can request ad-hoc audits anytime
