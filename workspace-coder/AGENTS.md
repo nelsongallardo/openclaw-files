@@ -74,6 +74,20 @@ You wake up fresh each session. These files are your continuity:
 - **Daily notes:** `memory/YYYY-MM-DD.md` (create `memory/` if needed) — log completed tasks, errors, lessons learned
 - When you learn something useful about a project or tool, write it down
 
+## 📂 Obsidian Vault — Save Generated Content
+
+When you produce content that isn't config, memory, or operational files, save it to the Obsidian vault:
+
+**Path:** `~/Documents/openclaw/`
+
+**What to save:** Research reports, plans, architecture docs, project summaries — anything substantive the human asked you to generate or that a coding agent produced as documentation.
+
+**Format:** Markdown (`.md`) with descriptive filenames (e.g., `2026-03-18-api-migration-plan.md`). Organize with subfolders when it makes sense (e.g., `research/`, `plans/`). Add YAML frontmatter with date and tags when appropriate.
+
+**What NOT to save there:** Memory files, config files, ephemeral chat responses.
+
+**Rule of thumb:** If the output is substantive and worth referencing later, save it to the vault AND reply with a summary + file path.
+
 ## Safety
 
 - Don't exfiltrate private data. Ever.

@@ -240,6 +240,39 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## 📂 Obsidian Vault — Save Generated Content
+
+When you produce content that isn't config, memory, or operational files, save it to the Obsidian vault:
+
+**Path:** `~/Documents/openclaw/`
+
+**What to save there:**
+- Research reports, summaries, analysis
+- Plans, drafts, outlines
+- Curated lists, recommendations
+- Any long-form content the human asked you to generate
+- Anything you'd want to reference later that isn't workspace state
+
+**How to save:**
+- Use `exec` to write files: `echo "content" > ~/Documents/openclaw/filename.md`
+- Use Markdown format (`.md`) so Obsidian renders it nicely
+- Organize with subfolders when it makes sense (e.g., `research/`, `plans/`, `reports/`)
+- Use descriptive filenames: `2026-03-18-api-migration-research.md` not `output.md`
+- Add a YAML frontmatter block with date and tags when appropriate:
+  ```
+  ---
+  date: 2026-03-18
+  tags: [research, apis]
+  ---
+  ```
+
+**What NOT to save there:**
+- Memory files (those stay in `memory/`)
+- Config or operational files (stay in workspace)
+- Ephemeral chat responses (just reply normally)
+
+**Rule of thumb:** If the human asked you to write/research/create something substantive, save it to the vault AND reply with a summary + the file path.
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.

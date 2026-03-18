@@ -13,7 +13,14 @@
 
 1. Execute `~/.openclaw/workspace-security/scripts/audit-lulu.sh`
 2. Read the script output
-3. Analyze the data and produce ONLY the report below — nothing else
+3. Filter out known-safe traffic (see list below)
+4. **Investigate anything suspicious BEFORE reporting:**
+   - Unknown process? → Run `ps aux | grep <process>` and `which <binary>` to identify it
+   - Unknown IP? → Run `nslookup <ip>` or `whois <ip>` to find out who owns it
+   - Unusual port? → Run `lsof -i :<port>` to see what's using it
+   - New listening port? → Run `lsof -i :<port> -sTCP:LISTEN` to identify the service
+   - Combine findings to determine if the activity is legitimate or genuinely suspicious
+5. Produce the report below with your investigation results included — nothing else
 
 ## Report Format
 
@@ -22,10 +29,10 @@ Use this exact format. Replace placeholders with actual data from the audit scri
 Security Audit Report — YYYY-MM-DD
 
 New outbound IPs detected:
-- <ip> (<process>, port <port>)
+- <ip> (<process>, port <port>) — <investigation result, e.g. "resolves to amazonaws.com, used by Homebrew update">
 
 Suspicious activity:
-- <description>
+- <description> — <what you found when you investigated>
 
 Risk level: <None|Low|Medium|High|Critical>
 
@@ -51,6 +58,18 @@ Recommended actions:
 - Medium — Unexpected processes making outbound connections, or connections to unusual ports
 - High — Connections to known-bad IPs, Tor nodes, or data exfiltration patterns
 - Critical — Active compromise indicators (reverse shells, C2 traffic patterns)
+
+## 📂 Obsidian Vault — Save Generated Content
+
+Save audit reports to the Obsidian vault for historical reference:
+
+**Path:** `~/Documents/openclaw/security/`
+
+**What to save:** Security audit reports (copy of each report you produce).
+
+**Format:** Markdown (`.md`) with filenames like `2026-03-18-security-audit.md`. Add YAML frontmatter with date and risk level.
+
+**Rule:** After producing a report, also save a copy to the vault.
 
 ## Safety
 
