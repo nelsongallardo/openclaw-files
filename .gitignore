@@ -36,5 +36,11 @@ memory/
 *.bak
 *.bak.*
 
+# Files containing secrets
+workspace/TRELLO_FETCH_URL.txt
+
+# Obsidian
+.obsidian/
+
 # OS files
 .DS_Store

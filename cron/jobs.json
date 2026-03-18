@@ -2,45 +2,13 @@
   "version": 1,
   "jobs": [
     {
-      "id": "420feb8f-112c-4203-863e-818b4771d552",
-      "agentId": "main",
-      "sessionKey": "agent:main:telegram:direct:8462098656",
-      "name": "reminder-read-reddit-wednesday",
-      "enabled": false,
-      "deleteAfterRun": true,
-      "createdAtMs": 1773083489976,
-      "updatedAtMs": 1773259200012,
-      "schedule": {
-        "at": "2026-03-11T20:00:00.000Z",
-        "kind": "at"
-      },
-      "sessionTarget": "main",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "systemEvent",
-        "text": "💡 Reminder: Time to read this Reddit post from the OpenClaw community: https://www.reddit.com/r/openclaw/s/s5qok4Sdo5"
-      },
-      "delivery": {
-        "mode": "none"
-      },
-      "state": {
-        "lastRunAtMs": 1773259200008,
-        "lastRunStatus": "skipped",
-        "lastStatus": "skipped",
-        "lastDurationMs": 4,
-        "lastError": "disabled",
-        "lastDeliveryStatus": "not-requested",
-        "consecutiveErrors": 0
-      }
-    },
-    {
       "id": "21e31900-54dc-48dd-b204-350a44d49879",
       "agentId": "security",
       "sessionKey": "agent:security:telegram:direct:8462098656",
       "name": "security-audit-lulu-logs",
       "enabled": true,
       "createdAtMs": 1773083859141,
-      "updatedAtMs": 1773485489416,
+      "updatedAtMs": 1773801010131,
       "schedule": {
         "kind": "cron",
         "expr": "30 2 * * *"
@@ -59,72 +27,81 @@
         "to": "-1003835107764:topic:2"
       },
       "state": {
-        "nextRunAtMs": 1773541800000,
-        "lastRunAtMs": 1773485485323,
+        "nextRunAtMs": 1773887400000,
+        "lastRunAtMs": 1773801000011,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 4093,
+        "lastDurationMs": 10120,
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0,
         "lastDelivered": true
       }
     },
     {
-      "id": "45b65e0c-c569-46b1-b25a-91e53b0d36f1",
-      "agentId": "main",
-      "sessionKey": "agent:main:telegram:direct:8462098656",
-      "name": "Pick up medicine and return clothes",
-      "enabled": false,
-      "deleteAfterRun": true,
-      "createdAtMs": 1773409546219,
-      "updatedAtMs": 1773413100012,
+      "id": "a8322c7b-210a-47f5-9e04-c4f557ca2ea6",
+      "agentId": "quick",
+      "sessionKey": "agent:quick:telegram:group:-1003835107764:topic:8",
+      "name": "daily-tech-news",
+      "enabled": true,
+      "createdAtMs": 1773499976455,
+      "updatedAtMs": 1773819081530,
       "schedule": {
-        "kind": "at",
-        "at": "2026-03-13T14:45:00.000Z"
+        "kind": "cron",
+        "expr": "30 7 * * *",
+        "tz": "Europe/London"
       },
-      "sessionTarget": "main",
+      "sessionTarget": "isolated",
       "wakeMode": "now",
       "payload": {
-        "kind": "systemEvent",
-        "text": "Reminder: pick up medicine and return clothes"
+        "kind": "agentTurn",
+        "message": "I want a brief of the latest tech news. Important: only the news from the last 24 hours.",
+        "model": "ollama/gpt-oss:20b",
+        "timeoutSeconds": 300,
+        "thinking": "medium"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "-1003835107764:topic:194",
+        "bestEffort": false
       },
       "state": {
-        "lastRunAtMs": 1773413100010,
-        "lastRunStatus": "skipped",
-        "lastStatus": "skipped",
-        "lastDurationMs": 2,
-        "lastError": "disabled",
-        "lastDeliveryStatus": "not-requested",
+        "nextRunAtMs": 1773905400000,
+        "lastRunAtMs": 1773819000008,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 81522,
+        "lastDelivered": true,
+        "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0
-      }
+      },
+      "deleteAfterRun": false
     },
     {
-      "id": "a3637c05-9b4d-4b74-8763-45d1fea804c5",
-      "agentId": "main",
-      "sessionKey": "agent:main:telegram:direct:8462098656",
-      "name": "Medicine & clothes reminder test",
-      "enabled": false,
-      "deleteAfterRun": true,
-      "createdAtMs": 1773413792886,
-      "updatedAtMs": 1773414120012,
+      "id": "eb362832-697a-4a78-b8cf-b31c806dae42",
+      "agentId": "analytics",
+      "sessionKey": "agent:analytics:telegram:group:-1003843555366:topic:1",
+      "name": "Weekly refresh: cuiz-ai dashboard",
+      "enabled": true,
+      "createdAtMs": 1773701090471,
+      "updatedAtMs": 1773701090471,
       "schedule": {
-        "kind": "at",
-        "at": "2026-03-13T15:02:00.000Z"
+        "kind": "cron",
+        "expr": "0 7 * * 1",
+        "tz": "Europe/London"
       },
-      "sessionTarget": "main",
+      "sessionTarget": "isolated",
       "wakeMode": "now",
       "payload": {
-        "kind": "systemEvent",
-        "text": "Reminder test: pick up medicine and return clothes"
+        "kind": "agentTurn",
+        "message": "Refresh the cuiz-ai HTML dashboard in /Users/openclaw/.openclaw/workspace-analytics by running ./scripts/update_cuiz_dashboard.py from the workspace root. Do not change the script unless it is broken. Update the dashboard files in /Users/openclaw/.openclaw/workspace-analytics/dashboard. If the refresh succeeds, finish quietly. If it fails, report the failure with the concrete error.",
+        "timeoutSeconds": 600
+      },
+      "delivery": {
+        "mode": "none"
       },
       "state": {
-        "lastRunAtMs": 1773414120012,
-        "lastRunStatus": "skipped",
-        "lastStatus": "skipped",
-        "lastDurationMs": 0,
-        "lastError": "disabled",
-        "lastDeliveryStatus": "not-requested",
-        "consecutiveErrors": 0
+        "nextRunAtMs": 1774249200000
       }
     }
   ]

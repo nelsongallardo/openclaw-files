@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cuiz AI Dashboard</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #131a2e;
+      --muted: #91a0c0;
+      --text: #eef3ff;
+      --good: #1f9d68;
+      --warn: #d19a00;
+      --bad: #cf4b64;
+      --line1: #6ea8fe;
+      --line2: #63e6be;
+      --line3: #f7b955;
+      --line4: #ff7b72;
+      --line5: #c77dff;
+      --border: rgba(255,255,255,.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif; background: linear-gradient(180deg, #0b1020, #0f1630 35%, #0a1122); color: var(--text); }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 28px; }
+    .header { display:flex; justify-content:space-between; gap:16px; align-items:flex-end; flex-wrap:wrap; margin-bottom: 22px; }
+    h1 { margin:0; font-size: 34px; }
+    .sub { color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .grid { display:grid; gap:16px; }
+    .metrics { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 16px; }
+    .cols { grid-template-columns: 1.3fr .9fr; align-items:start; }
+    .bottom { grid-template-columns: 1fr 1fr; align-items:start; }
+    .card { background: rgba(19,26,46,.92); border: 1px solid var(--border); border-radius: 18px; padding: 18px; box-shadow: 0 8px 28px rgba(0,0,0,.2); }
+    .metric .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+    .metric .value { font-size: 34px; font-weight: 700; margin-top: 8px; }
+    .metric .delta { margin-top: 8px; font-size: 14px; font-weight: 700; }
+    .metric.good .delta { color: #70e1a1; }
+    .metric.warn .delta { color: #ffd166; }
+    .metric.bad .delta { color: #ff8fa3; }
+    .metric.neutral .delta { color: var(--muted); }
+    .metric .hint { color: var(--muted); font-size: 13px; margin-top: 6px; }
+    h2 { margin: 0 0 14px; font-size: 18px; }
+    p { margin: 0; line-height: 1.6; }
+    ul { margin: 0; padding-left: 18px; color: var(--text); line-height: 1.7; }
+    .pill { display:inline-block; padding: 6px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; border:1px solid var(--border); background: rgba(255,255,255,.04); margin-bottom: 12px; }
+    .pill.bad { color: #ff9fb0; } .pill.warn { color: #ffd166; } .pill.good { color: #70e1a1; } .pill.neutral { color: #c2cbe2; }
+    .chart { width:100%; height:320px; }
+    table { width:100%; border-collapse: collapse; }
+    th, td { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06); font-size: 14px; }
+    th { color: var(--muted); text-align:left; font-weight:600; }
+    .num { text-align:right; font-variant-numeric: tabular-nums; }
+    .small { color: var(--muted); font-size: 13px; }
+    .kpis { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+    .mini { padding: 14px; border-radius: 14px; background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.05); }
+    .mini .t { color: var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.08em; }
+    .mini .v { margin-top: 6px; font-size: 22px; font-weight: 700; }
+    @media (max-width: 980px) { .cols, .bottom { grid-template-columns: 1fr; } .kpis { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div>
+        <h1>Cuiz AI dashboard</h1>
+        <div class="sub">Weekly snapshot for the metrics that matter. Updated: 2026-03-16 22:47 GMT · Latest completed week: 2026-03-08</div>
+      </div>
+      <div class="sub">Project ID 62966 · Source: PostHog</div>
+    </div>
+
+    <div class="grid metrics">
+      
+        <div class="card metric bad">
+          <div class="label">Weekly active users</div>
+          <div class="value">35</div>
+          <div class="delta">-35.2%</div>
+          <div class="hint">Distinct users with pageviews this week</div>
+        </div>
+        
+      
+        <div class="card metric bad">
+          <div class="label">Upload users</div>
+          <div class="value">39</div>
+          <div class="delta">-26.4%</div>
+          <div class="hint">Users who uploaded content</div>
+        </div>
+        
+      
+        <div class="card metric good">
+          <div class="label">Quiz generation users</div>
+          <div class="value">26</div>
+          <div class="delta">+52.9%</div>
+          <div class="hint">Users who generated quizzes</div>
+        </div>
+        
+      
+        <div class="card metric neutral">
+          <div class="label">Quiz completion users</div>
+          <div class="value">3</div>
+          <div class="delta">0.0%</div>
+          <div class="hint">Users who completed a quiz</div>
+        </div>
+        
+      
+        <div class="card metric bad">
+          <div class="label">Total revenue</div>
+          <div class="value">£0</div>
+          <div class="delta">-100.0%</div>
+          <div class="hint">Purchases + renewals in latest completed week</div>
+        </div>
+        
+      
+        <div class="card metric bad">
+          <div class="label">Checkout value</div>
+          <div class="value">£0</div>
+          <div class="delta">-100.0%</div>
+          <div class="hint">Tracked amount on checkout starts</div>
+        </div>
+        
+    </div>
+
+    <div class="grid cols">
+      <div class="card">
+        <h2>Main trend</h2>
+        <svg id="trendChart" class="chart" viewBox="0 0 900 320" preserveAspectRatio="none"></svg>
+        <div class="small">Blue = WAU · Green = Upload users · Yellow = Quiz generation users · Red = Quiz completion users</div>
+      </div>
+      <div class="card">
+        <div class="pill bad">Needs attention</div>
+        <h2>Summary</h2>
+        <p>Cuiz AI is currently **needs attention**. Weekly active users are **35** (-35.2% vs previous week), file upload users are **39** (-26.4%), and quiz generation users are **26** (+52.9%). The biggest operational question is whether traffic/acquisition has cooled down permanently or whether the recent drop is a temporary lull.</p>
+        <div class="kpis">
+          <div class="mini"><div class="t">Quiz completion rate</div><div class="v">11.5%</div></div>
+          <div class="mini"><div class="t">Checkout rate</div><div class="v">0.0%</div></div>
+          <div class="mini"><div class="t">Purchase / checkout</div><div class="v">0.0%</div></div>
+          <div class="mini"><div class="t">New revenue</div><div class="v">£0</div></div>
+          <div class="mini"><div class="t">Renewal revenue</div><div class="v">£0</div></div>
+          <div class="mini"><div class="t">Revenue / active user</div><div class="v">£0.00</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid bottom" style="margin-top:16px;">
+      <div class="card">
+        <h2>Main points to improve</h2>
+        <ul><li>Acquisition: identify what drove the February spike and whether that channel has gone quiet.</li><li>Activation: inspect the drop from quiz generated to quiz completed; this is the clearest product funnel leak.</li><li>Monetization: the pricing/paywall path is underperforming relative to product usage; review offer timing and pricing page exposure.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Assessment</h2>
+        <ul><li>too few generated quizzes are being completed</li><li>monetization is weak relative to product usage</li></ul>
+      </div>
+    </div>
+
+    <div class="grid bottom" style="margin-top:16px;">
+      <div class="card">
+        <h2>Top traffic sources (90d)</h2>
+        <table>
+          <thead><tr><th>Source</th><th class="num">Users</th></tr></thead>
+          <tbody><tr><td>www.cuiz-ai.com</td><td class='num'>378</td></tr>
+<tr><td>$direct</td><td class='num'>99</td></tr>
+<tr><td>www.reddit.com</td><td class='num'>55</td></tr>
+<tr><td>www.google.com</td><td class='num'>37</td></tr>
+<tr><td>chatgpt.com</td><td class='num'>14</td></tr>
+<tr><td>app.cuiz-ai.com</td><td class='num'>9</td></tr>
+<tr><td>www.bing.com</td><td class='num'>9</td></tr>
+<tr><td>l.facebook.com</td><td class='num'>4</td></tr></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2>Top pages (90d)</h2>
+        <table>
+          <thead><tr><th>Page</th><th class="num">Views</th></tr></thead>
+          <tbody><tr><td>https://app.cuiz-ai.com/upload</td><td class='num'>1,089</td></tr>
+<tr><td>https://app.cuiz-ai.com/</td><td class='num'>424</td></tr>
+<tr><td>https://app.cuiz-ai.com/quiz</td><td class='num'>334</td></tr>
+<tr><td>https://app.cuiz-ai.com/dashboard</td><td class='num'>216</td></tr>
+<tr><td>https://cuiz-ai.com/</td><td class='num'>145</td></tr>
+<tr><td>https://cuiz-ai.com/upload</td><td class='num'>58</td></tr>
+<tr><td>https://app.cuiz-ai.com/pricing</td><td class='num'>50</td></tr>
+<tr><td>http://localhost:3000/upload</td><td class='num'>29</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const weeks = ["2026-01-18", "2026-01-25", "2026-02-01", "2026-02-08", "2026-02-15", "2026-02-22", "2026-03-01", "2026-03-08"];
+    const series = {"wau": [56, 42, 40, 53, 46, 47, 54, 35], "uploads": [79, 53, 76, 74, 63, 57, 53, 39], "quizGenerated": [58, 40, 54, 60, 54, 42, 17, 26], "quizCompleted": [12, 6, 7, 13, 10, 8, 3, 3], "checkouts": [2, 0, 1, 1, 3, 1, 1, 0], "purchases": [1, 0, 1, 0, 1, 1, 0, 0], "revenue": [10.0, 5.0, 15.0, 0, 15.0, 15.0, 10.0, 0]};
+    const palette = { wau: '#6ea8fe', uploads: '#63e6be', quizGenerated: '#f7b955', quizCompleted: '#ff7b72' };
+
+    function drawChart() {
+      const svg = document.getElementById('trendChart');
+      const width = 900, height = 320;
+      const pad = { top: 20, right: 16, bottom: 36, left: 42 };
+      const keys = ['wau', 'uploads', 'quizGenerated', 'quizCompleted'];
+      const values = keys.flatMap(k => series[k]);
+      const max = Math.max(...values, 1);
+      const xStep = (width - pad.left - pad.right) / Math.max(weeks.length - 1, 1);
+      const y = v => height - pad.bottom - (v / max) * (height - pad.top - pad.bottom);
+      const x = i => pad.left + i * xStep;
+
+      const grid = [];
+      for (let i = 0; i < 5; i++) {
+        const val = Math.round(max * i / 4);
+        const gy = y(val);
+        grid.push(`<line x1="${pad.left}" y1="${gy}" x2="${width - pad.right}" y2="${gy}" stroke="rgba(255,255,255,.08)" />`);
+        grid.push(`<text x="8" y="${gy + 4}" fill="rgba(255,255,255,.55)" font-size="11">${val}</text>`);
+      }
+
+      const labels = weeks.map((w, i) => `<text x="${x(i)}" y="${height - 12}" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="11">${w.slice(5)}</text>`);
+
+      const paths = keys.map(key => {
+        const pts = series[key].map((v, i) => `${x(i)},${y(v)}`).join(' ');
+        const dots = series[key].map((v, i) => `<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="${palette[key]}" />`).join('');
+        return `<polyline fill="none" stroke="${palette[key]}" stroke-width="3" points="${pts}" stroke-linejoin="round" stroke-linecap="round" />${dots}`;
+      }).join('');
+
+      svg.innerHTML = `${grid.join('')}${labels.join('')}${paths}`;
+    }
+    drawChart();
+  </script>
+</body>
+</html>

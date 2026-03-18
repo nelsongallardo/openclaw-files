@@ -34,3 +34,5 @@ When Nelson asks to delegate a coding task to the coder agent, I must:
 5. If they repeatedly fail to deliver, escalate to Nelson, don't work around them.
 
 This expectation is firm: Nelson wants the coder to handle coding tasks end‑to‑end.
+
+
