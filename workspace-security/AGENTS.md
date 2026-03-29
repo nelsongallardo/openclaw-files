@@ -13,14 +13,20 @@
 
 1. Execute `~/.openclaw/workspace-security/scripts/audit-lulu.sh`
 2. Read the script output
-3. Filter out known-safe traffic (see list below)
-4. **Investigate anything suspicious BEFORE reporting:**
+3. **Check KNOWN_IPS.md** — do NOT re-flag IPs that are already listed as investigated and confirmed safe
+4. Filter out known-safe traffic (see list below + KNOWN_IPS.md)
+5. **Investigate anything suspicious BEFORE reporting:**
    - Unknown process? → Run `ps aux | grep <process>` and `which <binary>` to identify it
-   - Unknown IP? → Run `nslookup <ip>` or `whois <ip>` to find out who owns it
+   - Unknown IP? → Run `nslookup <ip>` or `curl ipinfo.io/<ip>/json` to find out who owns it
    - Unusual port? → Run `lsof -i :<port>` to see what's using it
    - New listening port? → Run `lsof -i :<port> -sTCP:LISTEN` to identify the service
    - Combine findings to determine if the activity is legitimate or genuinely suspicious
-5. Produce the report below with your investigation results included — nothing else
+6. **Update KNOWN_IPS.md** after each audit:
+   - Add newly investigated safe IPs to the table with date and notes
+   - Add any new listening ports confirmed safe
+   - Add entry to "Audit Log" section with summary
+   - Update "Last updated" date
+7. Produce the report below with your investigation results included — nothing else
 
 ## Report Format
 

@@ -1,16 +1,45 @@
 # TOOLS.md - Local Notes
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## ACP — How You Delegate Code
 
-## What Goes Here
+You spawn Claude Code via ACP using the `sessions_spawn` tool. This is your only coding workflow.
 
-Things like:
+### Spawn a session
 
-- Project paths and conventions
-- Git repo locations
-- Preferred coding agents per project
-- Anything environment-specific
+```json
+{
+  "task": "<detailed task description>",
+  "runtime": "acp",
+  "agentId": "claude",
+  "mode": "session",
+  "thread": true,
+  "cwd": "/Users/openclaw/projects/<project>",
+  "streamTo": "parent"
+}
+```
 
----
+### Resume an existing session
 
-Add whatever helps you do your job. This is your cheat sheet.
+```json
+{
+  "task": "<follow-up task>",
+  "runtime": "acp",
+  "agentId": "claude",
+  "resumeSessionId": "<session-id>"
+}
+```
+
+### Monitor / steer
+
+- `/acp status` — check running sessions
+- `/acp steer <instruction>` — nudge a running session
+- `/acp cancel` — abort if stuck
+- `/acp close` — end session
+
+## Project Paths
+
+- Default: `~/projects/`
+- Go projects: `~/projects/go-project/`
+- Python projects: `~/projects/`
+- Scripts: `~/scripts/`
+- **NEVER** use `~/.openclaw/` as cwd

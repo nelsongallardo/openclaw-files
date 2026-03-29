@@ -8,7 +8,7 @@
       "name": "security-audit-lulu-logs",
       "enabled": true,
       "createdAtMs": 1773083859141,
-      "updatedAtMs": 1773801010131,
+      "updatedAtMs": 1774747835913,
       "schedule": {
         "kind": "cron",
         "expr": "30 2 * * *"
@@ -27,11 +27,11 @@
         "to": "-1003835107764:topic:2"
       },
       "state": {
-        "nextRunAtMs": 1773887400000,
-        "lastRunAtMs": 1773801000011,
+        "nextRunAtMs": 1774834200000,
+        "lastRunAtMs": 1774747800006,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 10120,
+        "lastDurationMs": 35907,
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0,
         "lastDelivered": true
@@ -44,20 +44,20 @@
       "name": "daily-tech-news",
       "enabled": true,
       "createdAtMs": 1773499976455,
-      "updatedAtMs": 1773819081530,
+      "updatedAtMs": 1774765944084,
       "schedule": {
-        "kind": "cron",
-        "expr": "30 7 * * *",
-        "tz": "Europe/London"
+        "everyMs": 86400000,
+        "kind": "every",
+        "anchorMs": 1774765901511
       },
       "sessionTarget": "isolated",
       "wakeMode": "now",
       "payload": {
         "kind": "agentTurn",
-        "message": "I want a brief of the latest tech news. Important: only the news from the last 24 hours.",
+        "message": "Summarize the latest tech news from the past 24 hours.",
         "model": "ollama/gpt-oss:20b",
         "timeoutSeconds": 300,
-        "thinking": "medium"
+        "thinking": "Please use web_search to gather tech news from the last 24 hours and produce a brief summary."
       },
       "delivery": {
         "mode": "announce",
@@ -66,11 +66,11 @@
         "bestEffort": false
       },
       "state": {
-        "nextRunAtMs": 1773905400000,
-        "lastRunAtMs": 1773819000008,
+        "nextRunAtMs": 1774852200005,
+        "lastRunAtMs": 1774765800005,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 81522,
+        "lastDurationMs": 144079,
         "lastDelivered": true,
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0
@@ -84,7 +84,7 @@
       "name": "Weekly refresh: cuiz-ai dashboard",
       "enabled": true,
       "createdAtMs": 1773701090471,
-      "updatedAtMs": 1773701090471,
+      "updatedAtMs": 1774249237148,
       "schedule": {
         "kind": "cron",
         "expr": "0 7 * * 1",
@@ -101,7 +101,120 @@
         "mode": "none"
       },
       "state": {
-        "nextRunAtMs": 1774249200000
+        "nextRunAtMs": 1774850400000,
+        "lastRunAtMs": 1774249200014,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 37134,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "0c3d9ac0-1308-42f9-b8e8-d2d5b918ba11",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:8462098656",
+      "name": "Daily OpenAI Codex rate limit monitor",
+      "enabled": true,
+      "createdAtMs": 1774453561665,
+      "updatedAtMs": 1774771220550,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * *",
+        "tz": "Europe/London"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Check for OpenAI Codex rate limit errors in the past 24 hours and take proactive action if needed.\n\n1. Check logs for rate limit errors: grep -i 'API rate limit reached\\|429\\|quota' /Users/openclaw/.openclaw/logs/gateway.log | tail -20\n2. Check auth profile for failures: cat /Users/openclaw/.openclaw/agents/main/agent/auth-profiles.json | jq '.usageStats.\"openai-codex:default\"'\n3. If there are more than 3 rate limit errors in 24h, or lastFailureAt is recent (<24h), consider:\n   - Switching WhatsApp quick agent from GPT-5.4 to Ollama/GPT-OSS\n   - Creating a report in memory/YYYY-MM-DD-rate-limit.md\n   - Notifying via systemEvent if needed\n4. Always be proactive - fix issues before Nelson reports them.\n\nReply with your findings and any actions taken.",
+        "model": "openrouter/deepseek/deepseek-v3.2",
+        "timeoutSeconds": 300
+      },
+      "delivery": {
+        "mode": "none"
+      },
+      "state": {
+        "nextRunAtMs": 1774857600000,
+        "lastRunAtMs": 1774771200007,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 20543,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0,
+        "lastDelivered": false
+      }
+    },
+    {
+      "id": "64b797e9-241f-43ab-8a4f-a3cdc9f0c75a",
+      "agentId": "quick",
+      "sessionKey": "agent:quick:cron:a8322c7b-210a-47f5-9e04-c4f557ca2ea6",
+      "name": "daily-tech-news",
+      "enabled": true,
+      "createdAtMs": 1774683129589,
+      "updatedAtMs": 1774769448025,
+      "schedule": {
+        "expr": "30 7 * * *",
+        "kind": "cron",
+        "tz": "UTC"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Brief the latest tech news from the last 24 hours."
+      },
+      "delivery": {
+        "mode": "announce"
+      },
+      "state": {
+        "nextRunAtMs": 1774855800000,
+        "lastRunAtMs": 1774769400006,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 48019,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "729e8b2a-34cd-4b5d-9e4b-625f28a81a3b",
+      "agentId": "main",
+      "sessionKey": "agent:main:cron:email-triage",
+      "name": "email-triage",
+      "enabled": true,
+      "createdAtMs": 1774750000000,
+      "updatedAtMs": 1774772227753,
+      "schedule": {
+        "kind": "cron",
+        "expr": "17 * * * *",
+        "tz": "Europe/London"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "You are the email triage agent for CuizAI (support@cuiz-ai.com). Check the inbox and classify emails.\n\nStep 1: Check unread emails\n```\nexec command:\"/Users/openclaw/.openclaw/email-pipeline/bin/zohomail unread 10\"\n```\n\nStep 2: Classify each email into one of these categories:\n\nSKIP (do NOT write a task file):\n- Automated notifications (X/Twitter login alerts, password changes, 2FA codes)\n- Marketing, newsletters, promotional emails\n- Spam or phishing\n- System alerts that don't need human action\n- Transactional receipts, subscription confirmations\n\nACTIONABLE (write a task file with the correct category):\n- \"bug_report\" — User reports something broken, not working, or behaving unexpectedly\n- \"feature_request\" — User asks for new functionality or improvements\n- \"support_question\" — User needs help using the platform, has a how-to question\n- \"business_inquiry\" — Partnership, collaboration, sales, or business proposal\n- \"escalation\" — Anything urgent, legal, complaint, or that clearly needs Nelson personally\n\nStep 3: For each ACTIONABLE email, read the full content:\n```\nexec command:\"/Users/openclaw/.openclaw/email-pipeline/bin/zohomail read <folderId> <messageId>\"\n```\n\nStep 4: Write a task file to /Users/openclaw/.openclaw/email-pipeline/tasks/\n\nFilename: YYYY-MM-DD_HHmm_<short-slug>.json\n\nFormat:\n```json\n{\n  \"created\": \"ISO-8601 timestamp\",\n  \"source\": \"email\",\n  \"category\": \"bug_report | feature_request | support_question | business_inquiry | escalation\",\n  \"from\": \"sender@example.com\",\n  \"sender_name\": \"Name\",\n  \"subject\": \"Email subject\",\n  \"message_id\": \"zoho_message_id\",\n  \"folder_id\": \"zoho_folder_id\",\n  \"summary\": \"Brief 1-2 sentence summary of what the user wants\",\n  \"priority\": \"low | medium | high\",\n  \"requires_code_change\": true/false,\n  \"full_content\": \"The full email text\"\n}\n```\n\nClassification guide:\n- requires_code_change: true for bug_report, feature_request, and anything that could involve updating files in the codebase (including docs, UI text, config). false ONLY for pure business_inquiry and escalation.\n- priority: high if user is frustrated, paying customer, or blocking issue. medium for normal requests. low for nice-to-haves.\n\nStep 5: For ALL emails (both actionable and skipped), mark them as processed (this also marks as read in Zoho):\n```\nexec command:\"/Users/openclaw/.openclaw/email-pipeline/bin/zohomail mark-processed <messageId>\"\n```\n\nStep 6: If no actionable emails, reply HEARTBEAT_OK.\nIf you wrote task files, reply with a brief count: e.g. \"2 tasks: 1 bug_report (high), 1 feature_request (medium)\"",
+        "model": "chutes/Qwen/Qwen3.5-397B-A17B-TEE",
+        "lightContext": true,
+        "timeoutSeconds": 300
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "8462098656"
+      },
+      "state": {
+        "nextRunAtMs": 1774775820000,
+        "lastRunAtMs": 1774772220008,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 7745,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
       }
     }
   ]

@@ -1,18 +1,29 @@
 # HEARTBEAT
 
-You MUST use tools first. Do NOT reply without calling a tool.
+Run through this checklist. Only notify Nelson if something needs attention. If nothing does, reply HEARTBEAT_OK.
 
-## Step 1
+## 1. Email Pipeline Results
 
-Read /Users/openclaw/.openclaw/workspace/TRELLO_PROGRESS.md
+```
+exec command:"ls /Users/openclaw/.openclaw/email-pipeline/results/ 2>/dev/null"
+```
 
-## Step 2
+If result files exist, read each one and notify Nelson on Telegram based on type:
 
-Run `~/.openclaw/workspace/scripts/trello-fetch-todo.sh` then read `/Users/openclaw/.openclaw/workspace/TRELLO_TODO.json`
+- **Escalation** (suggested_action = "escalate"): 🚨 prefix, include analysis + notes, say "This needs your personal attention"
+- **Reply + PR** (pr_url is not null): 📧 prefix, include PR link, ask "Send reply & merge PR?"
+- **Reply only**: 📧 prefix, show draft, ask "Send this reply?"
 
-## Step 3
+After notifying, move the result file to `email-pipeline/archive/`.
 
-If Status is "started": reply HEARTBEAT_OK
-If Status is "idle" and there is a card: update TRELLO_PROGRESS.md with card name, id, status "started", then use sessions_spawn to tell agent "main" to do the task and move the card.
-If Status is "idle" and no card: reply HEARTBEAT_OK
-If Status is "done": use sessions_spawn to tell agent "main" to move the card to Done list 69aed42be150c114e5790af0, then reset TRELLO_PROGRESS.md to idle.
+## 2. Calendar
+
+Check for upcoming events in the next 2 hours. Notify if something's coming up.
+
+## 3. Weather
+
+If it's morning (before 10am), check London weather. Only notify if rain or unusual conditions.
+
+## 4. Quiet Hours
+
+Don't notify between 23:00–08:00 unless it's an escalation.

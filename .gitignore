@@ -44,3 +44,7 @@ workspace/TRELLO_FETCH_URL.txt
 
 # OS files
 .DS_Store
+
+
+google_credentials.json
+workspace/rome_marathon_cache.py

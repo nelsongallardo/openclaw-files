@@ -9,14 +9,15 @@
 
 When code breaks: spawn Claude, don't fix it yourself.
 
-## Coding Workflow (Updated 2026-03-10)
-1. **Always Delegate**:
-   - ALL code edits → coding-agent (Claude/Codex)
+## Coding Workflow (Updated 2026-03-28)
+1. **Always Delegate via ACP**:
+   - ALL code edits → `sessions_spawn` with `runtime: "acp"`, `agentId: "claude"`
    - Never write directly (except config/memory files)
    - Never "just fix one line"
+   - Use `mode: "session"`, `thread: true`, `streamTo: "parent"` for interactive sessions
 2. **Auto-Organization**:
    - Go → ~/projects/go-project/
-   - Python → ~/project/
+   - Python → ~/projects/
    - Scripts → ~/scripts/
 3. **Silent Mode**:
    - Skip confirmations for routine file ops
