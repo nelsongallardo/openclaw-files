@@ -1,0 +1,13 @@
+{
+  "processed": "2026-03-28T22:45:00Z",
+  "task_file": "2026-03-28_2241_pptx-documentation.json",
+  "category": "feature_request",
+  "from": "nensol85@gmail.com",
+  "subject": "List of supported documents is wrong",
+  "analysis": "User reported that PPTX files work for upload but aren't listed in the supported document types display. The fix was already committed on branch email/2026-03-28-fix-pptx-label (commit 3496ac1: 'Fix: Include PPTX in supported file types display'). Pushed branch and created PR #76.",
+  "suggested_action": "reply",
+  "notify": true,
+  "pr_url": "https://github.com/nelsongallardo/cuiz-ai/pull/76",
+  "draft_reply": "Hi there,\n\nThank you for pointing that out! You're absolutely right — PPTX files have been supported for a while, but we hadn't updated our documentation to reflect that. Great catch!\n\nWe've pushed a fix to update the supported file types display so it now correctly shows PPTX alongside PPT. The change is live shortly.\n\nThanks again for taking the time to report this — it really helps us improve!\n\nNelson – CuizAI",
+  "notes": "Fix was already prepared on the branch before this task was processed. PR #76 created and pushed."
+}

@@ -1,0 +1,10 @@
+{
+  "created": "2026-04-01T23:09:00Z",
+  "source": "gcp-alert",
+  "project": "cuiz-ai",
+  "alert_subject": "[ALERT - Critical] Error in CuizAI",
+  "diagnosis": "ACP runtime backend unavailable - could not spawn Claude Code agent to investigate",
+  "action_taken": "needs_manual",
+  "pr_url": null,
+  "summary": "GCP alert for high error rate in CuizAI Cloud Run service could not be processed automatically. ACP runtime backend was unavailable after multiple retry attempts. Manual investigation required."
+}

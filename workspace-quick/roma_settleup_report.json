@@ -1,0 +1,991 @@
+{
+  "summary": {
+    "total_expenses_gbp": 4847.47,
+    "expense_count": 36,
+    "transfer_count": 7,
+    "people": [
+      "Alessia",
+      "Anjana",
+      "Edu",
+      "Elza",
+      "Menta",
+      "Nelson",
+      "Rachel",
+      "Rhuari",
+      "Vlad"
+    ]
+  },
+  "per_person": [
+    {
+      "person": "Alessia",
+      "paid_gbp": 0.0,
+      "owed_share_gbp": 526.72,
+      "net_before_transfers_gbp": -526.72,
+      "net_after_transfers_gbp": -216.34,
+      "expense_count": 0
+    },
+    {
+      "person": "Anjana",
+      "paid_gbp": 681.06,
+      "owed_share_gbp": 612.98,
+      "net_before_transfers_gbp": 68.08,
+      "net_after_transfers_gbp": 378.46,
+      "expense_count": 10
+    },
+    {
+      "person": "Edu",
+      "paid_gbp": 645.34,
+      "owed_share_gbp": 579.88,
+      "net_before_transfers_gbp": 65.46,
+      "net_after_transfers_gbp": 375.84,
+      "expense_count": 7
+    },
+    {
+      "person": "Elza",
+      "paid_gbp": 152.77,
+      "owed_share_gbp": 616.8,
+      "net_before_transfers_gbp": -464.03,
+      "net_after_transfers_gbp": -153.65,
+      "expense_count": 4
+    },
+    {
+      "person": "Menta",
+      "paid_gbp": 86.7,
+      "owed_share_gbp": 605.61,
+      "net_before_transfers_gbp": -518.91,
+      "net_after_transfers_gbp": -208.53,
+      "expense_count": 2
+    },
+    {
+      "person": "Nelson",
+      "paid_gbp": 3007.77,
+      "owed_share_gbp": 637.92,
+      "net_before_transfers_gbp": 2369.85,
+      "net_after_transfers_gbp": 197.19,
+      "expense_count": 5
+    },
+    {
+      "person": "Rachel",
+      "paid_gbp": 166.21,
+      "owed_share_gbp": 608.41,
+      "net_before_transfers_gbp": -442.2,
+      "net_after_transfers_gbp": -131.82,
+      "expense_count": 4
+    },
+    {
+      "person": "Rhuari",
+      "paid_gbp": 107.62,
+      "owed_share_gbp": 595.76,
+      "net_before_transfers_gbp": -488.14,
+      "net_after_transfers_gbp": -177.76,
+      "expense_count": 4
+    },
+    {
+      "person": "Vlad",
+      "paid_gbp": 0.0,
+      "owed_share_gbp": 63.56,
+      "net_before_transfers_gbp": -63.56,
+      "net_after_transfers_gbp": -63.56,
+      "expense_count": 0
+    }
+  ],
+  "top_purposes": [
+    {
+      "purpose": "AIRBNB",
+      "total_gbp": 2483.0
+    },
+    {
+      "purpose": "Unlabelled",
+      "total_gbp": 382.59
+    },
+    {
+      "purpose": "Marathon day dinner",
+      "total_gbp": 302.61
+    },
+    {
+      "purpose": "dinner",
+      "total_gbp": 250.74
+    },
+    {
+      "purpose": "lunch",
+      "total_gbp": 235.01
+    },
+    {
+      "purpose": "tourist tax",
+      "total_gbp": 208.0
+    },
+    {
+      "purpose": "Drinks",
+      "total_gbp": 199.43
+    },
+    {
+      "purpose": "Coliseum tickets",
+      "total_gbp": 119.19
+    },
+    {
+      "purpose": "Brick drinks",
+      "total_gbp": 100.58
+    },
+    {
+      "purpose": "Uber",
+      "total_gbp": 89.2
+    },
+    {
+      "purpose": "2 uber vans",
+      "total_gbp": 69.4
+    },
+    {
+      "purpose": "Saturday Brunch",
+      "total_gbp": 46.67
+    },
+    {
+      "purpose": "van home",
+      "total_gbp": 40.0
+    },
+    {
+      "purpose": "Airport trip",
+      "total_gbp": 36.44
+    },
+    {
+      "purpose": "Beers",
+      "total_gbp": 30.35
+    },
+    {
+      "purpose": "Les Etoiles",
+      "total_gbp": 30.35
+    },
+    {
+      "purpose": "Aperols & Coffees at art gallery",
+      "total_gbp": 27.76
+    },
+    {
+      "purpose": "cosas para la marat\u00f3n",
+      "total_gbp": 27.07
+    },
+    {
+      "purpose": "uber",
+      "total_gbp": 26.03
+    },
+    {
+      "purpose": "Aperols Friday night",
+      "total_gbp": 24.29
+    },
+    {
+      "purpose": "Fernet",
+      "total_gbp": 19.98
+    },
+    {
+      "purpose": "Uber Piatto Romano",
+      "total_gbp": 19.41
+    },
+    {
+      "purpose": "Aperol & beer",
+      "total_gbp": 18.24
+    },
+    {
+      "purpose": "Taxi home",
+      "total_gbp": 13.83
+    },
+    {
+      "purpose": "Uber from Fancy Restaurant",
+      "total_gbp": 13.52
+    },
+    {
+      "purpose": "Locker",
+      "total_gbp": 12.97
+    },
+    {
+      "purpose": "Uber to Last Dinner",
+      "total_gbp": 11.49
+    },
+    {
+      "purpose": "Uber Maxi Van",
+      "total_gbp": 9.32
+    }
+  ],
+  "settlements": [
+    {
+      "from": "Alessia",
+      "to": "Anjana",
+      "amount_gbp": 216.34
+    },
+    {
+      "from": "Menta",
+      "to": "Anjana",
+      "amount_gbp": 162.12
+    },
+    {
+      "from": "Menta",
+      "to": "Edu",
+      "amount_gbp": 46.41
+    },
+    {
+      "from": "Rhuari",
+      "to": "Edu",
+      "amount_gbp": 177.76
+    },
+    {
+      "from": "Elza",
+      "to": "Edu",
+      "amount_gbp": 151.67
+    },
+    {
+      "from": "Elza",
+      "to": "Nelson",
+      "amount_gbp": 1.98
+    },
+    {
+      "from": "Rachel",
+      "to": "Nelson",
+      "amount_gbp": 131.82
+    },
+    {
+      "from": "Vlad",
+      "to": "Nelson",
+      "amount_gbp": 63.39
+    }
+  ],
+  "issues": [
+    "Line 27: split sum \u00a3302.67 differs from converted amount \u00a3302.61 for 'Marathon day dinner'.",
+    "Balances before transfers don't sum to zero: -0.17",
+    "Balances after transfers don't sum to zero: -0.17"
+  ],
+  "expenses": [
+    {
+      "payer": "Nelson",
+      "purpose": "AIRBNB",
+      "total_gbp": 2483.0,
+      "participants": [
+        "Alessia",
+        "Menta",
+        "Nelson",
+        "Anjana",
+        "Elza",
+        "Edu",
+        "Rhuari",
+        "Rachel"
+      ],
+      "shares_gbp": [
+        310.38,
+        310.38,
+        310.38,
+        310.38,
+        310.38,
+        310.38,
+        310.38,
+        310.38
+      ],
+      "date": "2026-03-17 12:11:23"
+    },
+    {
+      "payer": "Anjana",
+      "purpose": "Airport trip",
+      "total_gbp": 36.44,
+      "participants": [
+        "Anjana",
+        "Rachel",
+        "Nelson"
+      ],
+      "shares_gbp": [
+        12.15,
+        12.15,
+        12.15
+      ],
+      "date": "2026-03-21 11:44:04"
+    },
+    {
+      "payer": "Rhuari",
+      "purpose": "Saturday Brunch",
+      "total_gbp": 46.67,
+      "participants": [
+        "Anjana",
+        "Elza",
+        "Rhuari",
+        "Rachel"
+      ],
+      "shares_gbp": [
+        11.67,
+        11.67,
+        11.67,
+        11.67
+      ],
+      "date": "2026-03-21 13:49:51"
+    },
+    {
+      "payer": "Rhuari",
+      "purpose": "Aperols Friday night",
+      "total_gbp": 24.29,
+      "participants": [
+        "Elza",
+        "Rachel",
+        "Anjana",
+        "Rhuari"
+      ],
+      "shares_gbp": [
+        6.07,
+        6.07,
+        6.07,
+        6.07
+      ],
+      "date": "2026-03-21 14:03:23"
+    },
+    {
+      "payer": "Menta",
+      "purpose": "lunch",
+      "total_gbp": 72.87,
+      "participants": [
+        "Nelson",
+        "Menta"
+      ],
+      "shares_gbp": [
+        36.44,
+        36.44
+      ],
+      "date": "2026-03-21 16:30:27"
+    },
+    {
+      "payer": "Nelson",
+      "purpose": "uber",
+      "total_gbp": 26.03,
+      "participants": [
+        "Nelson",
+        "Menta",
+        "Rhuari",
+        "Elza",
+        "Anjana",
+        "Rachel"
+      ],
+      "shares_gbp": [
+        4.34,
+        4.34,
+        4.34,
+        4.34,
+        4.34,
+        4.34
+      ],
+      "date": "2026-03-21 16:32:51"
+    },
+    {
+      "payer": "Elza",
+      "purpose": "Aperols & Coffees at art gallery",
+      "total_gbp": 27.76,
+      "participants": [
+        "Anjana",
+        "Nelson",
+        "Rhuari",
+        "Elza",
+        "Rachel"
+      ],
+      "shares_gbp": [
+        7.29,
+        2.95,
+        7.29,
+        2.95,
+        7.29
+      ],
+      "date": "2026-03-21 16:42:46"
+    },
+    {
+      "payer": "Edu",
+      "purpose": "cosas para la marat\u00f3n",
+      "total_gbp": 27.07,
+      "participants": [
+        "Edu",
+        "Menta",
+        "Nelson"
+      ],
+      "shares_gbp": [
+        9.02,
+        9.02,
+        9.02
+      ],
+      "date": "2026-03-21 20:18:36"
+    },
+    {
+      "payer": "Anjana",
+      "purpose": "2 uber vans",
+      "total_gbp": 69.4,
+      "participants": [
+        "Elza",
+        "Nelson",
+        "Anjana",
+        "Menta",
+        "Rachel",
+        "Rhuari"
+      ],
+      "shares_gbp": [
+        11.56,
+        11.56,
+        11.56,
+        11.56,
+        11.56,
+        11.56
+      ],
+      "date": "2026-03-21 21:31:32"
+    },
+    {
+      "payer": "Anjana",
+      "purpose": "Unlabelled",
+      "total_gbp": 292.15,
+      "participants": [
+        "Nelson",
+        "Elza",
+        "Rhuari",
+        "Edu",
+        "Alessia",
+        "Rachel",
+        "Vlad",
+        "Anjana",
+        "Menta"
+      ],
+      "shares_gbp": [
+        33.79,
+        57.17,
+        32.23,
+        28.93,
+        32.1,
+        23.42,
+        22.82,
+        32.23,
+        29.45
+      ],
+      "date": "2026-03-21 21:35:33"
+    },
+    {
+      "payer": "Rachel",
+      "purpose": "Uber",
+      "total_gbp": 15.87,
+      "participants": [
+        "Nelson",
+        "Anjana",
+        "Menta",
+        "Rachel"
+      ],
+      "shares_gbp": [
+        3.96,
+        3.96,
+        3.96,
+        3.96
+      ],
+      "date": "2026-03-21 21:46:26"
+    },
+    {
+      "payer": "Rhuari",
+      "purpose": "Aperol & beer",
+      "total_gbp": 18.24,
+      "participants": [
+        "Rachel",
+        "Elza",
+        "Rhuari"
+      ],
+      "shares_gbp": [
+        6.08,
+        6.08,
+        6.08
+      ],
+      "date": "2026-03-22 12:54:33"
+    },
+    {
+      "payer": "Elza",
+      "purpose": "Fernet",
+      "total_gbp": 19.98,
+      "participants": [
+        "Nelson",
+        "Anjana",
+        "Elza",
+        "Rhuari"
+      ],
+      "shares_gbp": [
+        4.99,
+        4.99,
+        4.99,
+        4.99
+      ],
+      "date": "2026-03-22 18:22:07"
+    },
+    {
+      "payer": "Elza",
+      "purpose": "Uber",
+      "total_gbp": 14.59,
+      "participants": [
+        "Edu",
+        "Rhuari",
+        "Elza",
+        "Alessia"
+      ],
+      "shares_gbp": [
+        3.65,
+        3.65,
+        3.65,
+        3.65
+      ],
+      "date": "2026-03-22 21:57:32"
+    },
+    {
+      "payer": "Rhuari",
+      "purpose": "Uber",
+      "total_gbp": 18.42,
+      "participants": [
+        "Nelson",
+        "Elza",
+        "Alessia",
+        "Rhuari",
+        "Anjana"
+      ],
+      "shares_gbp": [
+        3.69,
+        3.69,
+        3.69,
+        3.69,
+        3.69
+      ],
+      "date": "2026-03-23 14:41:55"
+    },
+    {
+      "payer": "Edu",
+      "purpose": "lunch",
+      "total_gbp": 162.14,
+      "participants": [
+        "Anjana",
+        "Nelson",
+        "Alessia",
+        "Edu",
+        "Rhuari",
+        "Elza"
+      ],
+      "shares_gbp": [
+        27.03,
+        27.03,
+        27.03,
+        27.03,
+        27.03,
+        27.03
+      ],
+      "date": "2026-03-23 16:20:59"
+    },
+    {
+      "payer": "Anjana",
+      "purpose": "Drinks",
+      "total_gbp": 173.42,
+      "participants": [
+        "Menta",
+        "Anjana",
+        "Edu",
+        "Rachel",
+        "Rhuari",
+        "Elza",
+        "Nelson",
+        "Alessia"
+      ],
+      "shares_gbp": [
+        21.68,
+        21.68,
+        21.68,
+        21.68,
+        21.68,
+        21.68,
+        21.68,
+        21.68
+      ],
+      "date": "2026-03-23 16:21:08"
+    },
+    {
+      "payer": "Anjana",
+      "purpose": "Uber",
+      "total_gbp": 14.31,
+      "participants": [
+        "Nelson",
+        "Anjana",
+        "Rachel",
+        "Menta"
+      ],
+      "shares_gbp": [
+        3.58,
+        3.58,
+        3.58,
+        3.58
+      ],
+      "date": "2026-03-23 16:21:49"
+    },
+    {
+      "payer": "Edu",
+      "purpose": "Marathon day dinner",
+      "total_gbp": 302.61,
+      "participants": [
+        "Rachel",
+        "Nelson",
+        "Vlad",
+        "Edu",
+        "Alessia",
+        "Anjana",
+        "Menta",
+        "Elza",
+        "Rhuari"
+      ],
+      "shares_gbp": [
+        33.63,
+        33.63,
+        33.63,
+        33.63,
+        33.63,
+        33.63,
+        33.63,
+        33.63,
+        33.63
+      ],
+      "date": "2026-03-23 16:23:25"
+    },
+    {
+      "payer": "Rachel",
+      "purpose": "Brick drinks",
+      "total_gbp": 100.58,
+      "participants": [
+        "Anjana",
+        "Alessia",
+        "Nelson",
+        "Edu",
+        "Rachel",
+        "Rhuari",
+        "Menta",
+        "Elza"
+      ],
+      "shares_gbp": [
+        12.57,
+        12.57,
+        12.57,
+        12.57,
+        12.57,
+        12.57,
+        12.57,
+        12.57
+      ],
+      "date": "2026-03-23 16:23:33"
+    },
+    {
+      "payer": "Anjana",
+      "purpose": "Beers",
+      "total_gbp": 30.35,
+      "participants": [
+        "Vlad",
+        "Nelson",
+        "Edu",
+        "Anjana",
+        "Menta"
+      ],
+      "shares_gbp": [
+        6.07,
+        6.07,
+        6.07,
+        6.07,
+        6.07
+      ],
+      "date": "2026-03-23 16:23:56"
+    },
+    {
+      "payer": "Anjana",
+      "purpose": "Drinks",
+      "total_gbp": 26.01,
+      "participants": [
+        "Anjana",
+        "Menta",
+        "Rhuari",
+        "Edu",
+        "Nelson"
+      ],
+      "shares_gbp": [
+        5.2,
+        5.2,
+        5.2,
+        5.2,
+        5.2
+      ],
+      "date": "2026-03-23 16:24:29"
+    },
+    {
+      "payer": "Anjana",
+      "purpose": "Uber",
+      "total_gbp": 11.27,
+      "participants": [
+        "Elza",
+        "Rachel"
+      ],
+      "shares_gbp": [
+        5.64,
+        5.64
+      ],
+      "date": "2026-03-23 18:19:19"
+    },
+    {
+      "payer": "Rachel",
+      "purpose": "Les Etoiles",
+      "total_gbp": 30.35,
+      "participants": [
+        "Anjana",
+        "Rhuari",
+        "Nelson",
+        "Rachel",
+        "Elza"
+      ],
+      "shares_gbp": [
+        6.07,
+        6.07,
+        6.07,
+        6.07,
+        6.07
+      ],
+      "date": "2026-03-23 18:19:36"
+    },
+    {
+      "payer": "Nelson",
+      "purpose": "van home",
+      "total_gbp": 40.0,
+      "participants": [
+        "Nelson",
+        "Anjana",
+        "Rachel",
+        "Rhuari",
+        "Elza"
+      ],
+      "shares_gbp": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "date": "2026-03-23 19:16:37"
+    },
+    {
+      "payer": "Anjana",
+      "purpose": "Uber",
+      "total_gbp": 14.74,
+      "participants": [
+        "Nelson",
+        "Anjana",
+        "Elza",
+        "Rhuari"
+      ],
+      "shares_gbp": [
+        3.69,
+        3.69,
+        3.69,
+        3.69
+      ],
+      "date": "2026-03-23 23:06:08"
+    },
+    {
+      "payer": "Edu",
+      "purpose": "Uber to Last Dinner",
+      "total_gbp": 11.49,
+      "participants": [
+        "Edu",
+        "Alessia",
+        "Rhuari",
+        "Elza"
+      ],
+      "shares_gbp": [
+        2.87,
+        2.87,
+        2.87,
+        2.87
+      ],
+      "date": "2026-03-24 06:16:30"
+    },
+    {
+      "payer": "Edu",
+      "purpose": "Uber Maxi Van",
+      "total_gbp": 9.32,
+      "participants": [
+        "Menta",
+        "Nelson",
+        "Vlad",
+        "Edu",
+        "Anjana",
+        "Rachel",
+        "Alessia",
+        "Elza",
+        "Rhuari"
+      ],
+      "shares_gbp": [
+        1.04,
+        1.04,
+        1.04,
+        1.04,
+        1.04,
+        1.04,
+        1.04,
+        1.04,
+        1.04
+      ],
+      "date": "2026-03-24 06:18:08"
+    },
+    {
+      "payer": "Edu",
+      "purpose": "Uber from Fancy Restaurant",
+      "total_gbp": 13.52,
+      "participants": [
+        "Edu",
+        "Rhuari",
+        "Alessia",
+        "Elza"
+      ],
+      "shares_gbp": [
+        3.38,
+        3.38,
+        3.38,
+        3.38
+      ],
+      "date": "2026-03-24 06:19:14"
+    },
+    {
+      "payer": "Rachel",
+      "purpose": "Uber Piatto Romano",
+      "total_gbp": 19.41,
+      "participants": [
+        "Menta",
+        "Rachel",
+        "Anjana",
+        "Nelson"
+      ],
+      "shares_gbp": [
+        4.85,
+        4.85,
+        4.85,
+        4.85
+      ],
+      "date": "2026-03-24 06:31:59"
+    },
+    {
+      "payer": "Anjana",
+      "purpose": "Locker",
+      "total_gbp": 12.97,
+      "participants": [
+        "Nelson",
+        "Alessia",
+        "Rachel",
+        "Edu",
+        "Anjana"
+      ],
+      "shares_gbp": [
+        2.59,
+        2.59,
+        2.59,
+        2.59,
+        2.59
+      ],
+      "date": "2026-03-24 10:29:09"
+    },
+    {
+      "payer": "Nelson",
+      "purpose": "dinner",
+      "total_gbp": 250.74,
+      "participants": [
+        "Alessia",
+        "Rachel",
+        "Menta",
+        "Elza",
+        "Anjana",
+        "Nelson",
+        "Rhuari",
+        "Edu"
+      ],
+      "shares_gbp": [
+        31.34,
+        31.34,
+        31.34,
+        31.34,
+        31.34,
+        31.34,
+        31.34,
+        31.34
+      ],
+      "date": "2026-03-24 10:29:17"
+    },
+    {
+      "payer": "Nelson",
+      "purpose": "tourist tax",
+      "total_gbp": 208.0,
+      "participants": [
+        "Menta",
+        "Alessia",
+        "Rachel",
+        "Anjana",
+        "Elza",
+        "Nelson",
+        "Rhuari",
+        "Edu"
+      ],
+      "shares_gbp": [
+        26.0,
+        26.0,
+        26.0,
+        26.0,
+        26.0,
+        26.0,
+        26.0,
+        26.0
+      ],
+      "date": "2026-03-24 10:29:47"
+    },
+    {
+      "payer": "Menta",
+      "purpose": "Taxi home",
+      "total_gbp": 13.83,
+      "participants": [
+        "Edu",
+        "Alessia",
+        "Menta",
+        "Rachel"
+      ],
+      "shares_gbp": [
+        3.46,
+        3.46,
+        3.46,
+        3.46
+      ],
+      "date": "2026-03-24 10:33:02"
+    },
+    {
+      "payer": "Elza",
+      "purpose": "Unlabelled",
+      "total_gbp": 90.44,
+      "participants": [
+        "Anjana",
+        "Nelson",
+        "Menta",
+        "Elza",
+        "Rachel",
+        "Rhuari",
+        "Edu",
+        "Alessia"
+      ],
+      "shares_gbp": [
+        11.31,
+        11.31,
+        11.31,
+        11.31,
+        11.31,
+        11.31,
+        11.31,
+        11.31
+      ],
+      "date": "2026-03-24 10:33:54"
+    },
+    {
+      "payer": "Edu",
+      "purpose": "Coliseum tickets",
+      "total_gbp": 119.19,
+      "participants": [
+        "Menta",
+        "Edu",
+        "Rachel"
+      ],
+      "shares_gbp": [
+        39.73,
+        39.73,
+        39.73
+      ],
+      "date": "2026-03-24 12:04:59"
+    }
+  ]
+}

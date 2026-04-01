@@ -1,0 +1,13 @@
+{
+  "created": "2026-04-01T12:00:00Z",
+  "source": "gcp-alert",
+  "category": "gcp_alert",
+  "from": "alerting-noreply@google.com",
+  "subject": "[ALERT - Critical] Error in CuizAI",
+  "message_id": "test-123",
+  "summary": "High error rate detected in CuizAI Cloud Run service",
+  "priority": "high",
+  "requires_code_change": true,
+  "project": "cuiz-ai",
+  "full_content": "Error rate exceeded threshold. Service cuiz-ai returning 500 errors."
+}

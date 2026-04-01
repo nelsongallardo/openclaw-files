@@ -1,0 +1,470 @@
+#!/bin/bash
+# zohomail — CLI wrapper for Zoho Mail REST API
+# Usage: zohomail <command> [args]
+#
+# Commands:
+#   inbox [limit]         List recent emails (default: 10)
+#   unread [limit]        List unread emails only
+#   read <messageId>      Read full email content
+#   send <to> <subj> <body>  Send a new email
+#   reply <msgId> <to> <body>  Reply to an email (threads properly)
+#   folders               List mail folders
+#   token                 Print current access token (for debugging)
+
+set -euo pipefail
+
+CREDS="/Users/openclaw/.openclaw/email-pipeline/credentials/zoho.json"
+TOKEN_CACHE="/Users/openclaw/.openclaw/email-pipeline/credentials/.access_token"
+PROCESSED_IDS="/Users/openclaw/.openclaw/email-pipeline/credentials/processed-ids.json"
+
+# Initialize processed IDs file if it doesn't exist
+if [[ ! -f "$PROCESSED_IDS" ]]; then
+  echo '[]' > "$PROCESSED_IDS"
+fi
+
+# Read credentials
+CLIENT_ID=$(python3 -c "import json; print(json.load(open('$CREDS'))['client_id'])")
+CLIENT_SECRET=$(python3 -c "import json; print(json.load(open('$CREDS'))['client_secret'])")
+REFRESH_TOKEN=$(python3 -c "import json; print(json.load(open('$CREDS'))['refresh_token'])")
+ACCOUNT_ID=$(python3 -c "import json; print(json.load(open('$CREDS'))['account_id'])")
+API_DOMAIN=$(python3 -c "import json; print(json.load(open('$CREDS'))['api_domain'])")
+AUTH_DOMAIN=$(python3 -c "import json; print(json.load(open('$CREDS'))['auth_domain'])")
+
+get_access_token() {
+  # Check if cached token is still valid (less than 50 min old)
+  if [[ -f "$TOKEN_CACHE" ]]; then
+    local age=$(( $(date +%s) - $(stat -f %m "$TOKEN_CACHE") ))
+    if (( age < 3000 )); then
+      cat "$TOKEN_CACHE"
+      return
+    fi
+  fi
+
+  # Refresh the token
+  local response
+  response=$(curl -s -X POST "${AUTH_DOMAIN}/oauth/v2/token" \
+    -d "grant_type=refresh_token" \
+    -d "client_id=${CLIENT_ID}" \
+    -d "client_secret=${CLIENT_SECRET}" \
+    -d "refresh_token=${REFRESH_TOKEN}")
+
+  local token
+  token=$(echo "$response" | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])" 2>/dev/null)
+
+  if [[ -z "$token" ]]; then
+    echo "ERROR: Failed to refresh access token" >&2
+    echo "$response" >&2
+    exit 1
+  fi
+
+  echo "$token" > "$TOKEN_CACHE"
+  echo "$token"
+}
+
+api_get() {
+  local path="$1"
+  shift
+  local token
+  token=$(get_access_token)
+  curl -s -H "Authorization: Bearer ${token}" "${API_DOMAIN}/api/accounts/${ACCOUNT_ID}${path}" "$@"
+}
+
+cmd_inbox() {
+  local limit="${1:-10}"
+  api_get "/messages/view?limit=${limit}&sortorder=false" | python3 -c "
+import sys, json, html, datetime
+
+data = json.load(sys.stdin)
+if 'data' not in data:
+    print('No messages found')
+    sys.exit(0)
+
+for msg in data['data']:
+    ts = int(msg.get('receivedTime', '0')) / 1000
+    date = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M')
+    sender = msg.get('sender', 'Unknown')
+    subject = html.unescape(msg.get('subject', '(no subject)'))
+    msg_id = msg.get('messageId', '')
+    folder_id = msg.get('folderId', '')
+    status = 'UNREAD' if msg.get('status', '') == '0' else 'read'
+    summary = html.unescape(msg.get('summary', '')[:120])
+
+    print(f'[{status}] {date} | From: {sender}')
+    print(f'  Subject: {subject}')
+    print(f'  Summary: {summary}...')
+    print(f'  ID: {msg_id} | Folder: {folder_id}')
+    print()
+"
+}
+
+cmd_unread() {
+  local limit="${1:-10}"
+  api_get "/messages/view?limit=${limit}&sortorder=false" | python3 -c "
+import sys, json, html, datetime
+
+processed = json.load(open('${PROCESSED_IDS}'))
+data = json.load(sys.stdin)
+if 'data' not in data:
+    print('No messages found')
+    sys.exit(0)
+
+found = False
+for msg in data['data']:
+    msg_id = msg.get('messageId', '')
+    if msg_id in processed:
+        continue
+    ts = int(msg.get('receivedTime', '0')) / 1000
+    date = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M')
+    sender = msg.get('sender', 'Unknown')
+    subject = html.unescape(msg.get('subject', '(no subject)'))
+    folder_id = msg.get('folderId', '')
+    status = 'UNREAD' if msg.get('status', '') == '0' else 'read'
+    summary = html.unescape(msg.get('summary', '')[:120])
+
+    print(f'[{status}] {date} | From: {sender}')
+    print(f'  Subject: {subject}')
+    print(f'  Summary: {summary}...')
+    print(f'  ID: {msg_id} | Folder: {folder_id}')
+    print()
+    found = True
+
+if not found:
+    print('No new messages found')
+"
+}
+
+cmd_read() {
+  local folder_id="$1"
+  local message_id="$2"
+  api_get "/folders/${folder_id}/messages/${message_id}/content" | python3 -c "
+import sys, json, html, re
+
+data = json.load(sys.stdin)
+if 'data' not in data:
+    print('Message not found')
+    sys.exit(0)
+
+msg = data['data']
+print(f'From: {msg.get(\"fromAddress\", \"Unknown\")}')
+print(f'To: {msg.get(\"toAddress\", \"Unknown\")}')
+print(f'Subject: {html.unescape(msg.get(\"subject\", \"(no subject)\"))}')
+print(f'Date: {msg.get(\"date\", \"Unknown\")}')
+cc = msg.get('ccAddress', '')
+if cc and cc != 'Not Provided':
+    print(f'CC: {cc}')
+print('---')
+
+content = msg.get('content', '')
+# Strip HTML tags for plain text output
+text = re.sub(r'<br\s*/?>', '\n', content)
+text = re.sub(r'<[^>]+>', '', text)
+text = html.unescape(text)
+# Collapse excessive whitespace
+text = re.sub(r'\n{3,}', '\n\n', text.strip())
+print(text)
+"
+}
+
+cmd_mark_read() {
+  local message_id="$1"
+  local token
+  token=$(get_access_token)
+  local response
+  response=$(curl -s -X PUT \
+    -H "Authorization: Bearer ${token}" \
+    -H "Content-Type: application/json" \
+    -d "{\"mode\":\"markAsRead\",\"messageId\":[\"${message_id}\"]}" \
+    "${API_DOMAIN}/api/accounts/${ACCOUNT_ID}/updatemessage")
+  echo "$response" | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+status = data.get('status', {}).get('description', 'unknown')
+print(f'Mark as read: {status}')
+"
+}
+
+cmd_mark_processed() {
+  local message_id="$1"
+  # Also mark as read in Zoho
+  cmd_mark_read "$message_id" > /dev/null 2>&1
+  python3 -c "
+import json
+f = '${PROCESSED_IDS}'
+ids = json.load(open(f))
+if '${message_id}' not in ids:
+    ids.append('${message_id}')
+    # Keep only last 200 IDs to prevent unbounded growth
+    if len(ids) > 200:
+        ids = ids[-200:]
+    json.dump(ids, open(f, 'w'))
+    print(f'Marked as processed + read: ${message_id}')
+else:
+    print(f'Already processed: ${message_id}')
+"
+}
+
+cmd_json() {
+  # Raw JSON output of inbox — useful for agent parsing
+  local limit="${1:-10}"
+  api_get "/messages/view?limit=${limit}&sortorder=false"
+}
+
+cmd_token() {
+  get_access_token
+}
+
+cmd_send() {
+  local to=""
+  local subject=""
+  local body=""
+  local from="support@cuiz-ai.com"
+  local format="plaintext"
+
+  # Parse arguments
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --to|-t)
+        to="$2"
+        shift 2
+        ;;
+      --subject|-s)
+        subject="$2"
+        shift 2
+        ;;
+      --body|-b)
+        body="$2"
+        shift 2
+        ;;
+      --from|-f)
+        from="$2"
+        shift 2
+        ;;
+      --html)
+        format="html"
+        shift
+        ;;
+      *)
+        # Positional args: to subject body
+        if [[ -z "$to" ]]; then
+          to="$1"
+        elif [[ -z "$subject" ]]; then
+          subject="$1"
+        elif [[ -z "$body" ]]; then
+          body="$1"
+        fi
+        shift
+        ;;
+    esac
+  done
+
+  if [[ -z "$to" || -z "$subject" ]]; then
+    echo "Usage: zohomail send [--to|-t] <email> [--subject|-s] <subject> [--body|-b] <content> [--from|-f] <from>] [--html]" >&2
+    echo "  Or: zohomail send <to> <subject> <body>" >&2
+    exit 1
+  fi
+
+  # Read body from stdin if not provided
+  if [[ -z "$body" ]]; then
+    if [[ -t 0 ]]; then
+      echo "Error: No body provided. Use --body or pipe content via stdin." >&2
+      exit 1
+    fi
+    body=$(cat)
+  fi
+
+  local token
+  token=$(get_access_token)
+
+  # Escape the body for JSON
+  local json_body
+  json_body=$(python3 -c "import json; print(json.dumps('$body'))")
+
+  local response
+  response=$(curl -s -X POST "${API_DOMAIN}/api/accounts/${ACCOUNT_ID}/messages" \
+    -H "Authorization: Bearer ${token}" \
+    -H "Content-Type: application/json" \
+    -d "{\"fromAddress\":\"${from}\",\"toAddress\":\"${to}\",\"subject\":\"${subject}\",\"content\":${json_body},\"mailFormat\":\"${format}\"}")
+
+  echo "$response" | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+status = data.get('status', {})
+code = status.get('code', 'unknown')
+desc = status.get('description', '')
+if code == 200:
+    msg_data = data.get('data', {})
+    print(f'Sent: {msg_data.get(\"subject\", \"\")}')
+    print(f'To: {msg_data.get(\"toAddress\", \"\")}')
+    print(f'Message ID: {msg_data.get(\"messageId\", \"\")}')
+else:
+    print(f'Error {code}: {desc}')
+    print(json.dumps(data, indent=2))
+"
+}
+
+cmd_reply() {
+  local message_id=""
+  local to=""
+  local subject=""
+  local body=""
+  local from="support@cuiz-ai.com"
+  local format="plaintext"
+
+  # Parse arguments
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --message-id|-m)
+        message_id="$2"
+        shift 2
+        ;;
+      --to|-t)
+        to="$2"
+        shift 2
+        ;;
+      --subject|-s)
+        subject="$2"
+        shift 2
+        ;;
+      --body|-b)
+        body="$2"
+        shift 2
+        ;;
+      --from|-f)
+        from="$2"
+        shift 2
+        ;;
+      --html)
+        format="html"
+        shift
+        ;;
+      *)
+        # Positional args: messageId to subject body
+        if [[ -z "$message_id" ]]; then
+          message_id="$1"
+        elif [[ -z "$to" ]]; then
+          to="$1"
+        elif [[ -z "$subject" ]]; then
+          subject="$1"
+        elif [[ -z "$body" ]]; then
+          body="$1"
+        fi
+        shift
+        ;;
+    esac
+  done
+
+  if [[ -z "$message_id" || -z "$to" ]]; then
+    echo "Usage: zohomail reply <messageId> <to> [subject] [body]" >&2
+    echo "  Or: zohomail reply --message-id|-m <id> --to|-t <email> [--subject|-s <subj>] [--body|-b <content>] [--from|-f <email>] [--html]" >&2
+    echo "" >&2
+    echo "Replies to a message, threading it properly in email clients." >&2
+    exit 1
+  fi
+
+  # Read body from stdin if not provided
+  if [[ -z "$body" ]]; then
+    if [[ -t 0 ]]; then
+      echo "Error: No body provided. Use --body or pipe content via stdin." >&2
+      exit 1
+    fi
+    body=$(cat)
+  fi
+
+  local token
+  token=$(get_access_token)
+
+  # Escape the body for JSON
+  local json_body
+  json_body=$(python3 -c "import json; print(json.dumps('$body'))")
+
+  # Build JSON payload
+  local json_payload
+  json_payload=$(python3 -c "
+import json
+payload = {
+    'fromAddress': '${from}',
+    'toAddress': '${to}',
+    'content': ${json_body},
+    'mailFormat': '${format}',
+    'action': 'reply'
+}
+if '${subject}':
+    payload['subject'] = '${subject}'
+print(json.dumps(payload))
+")
+
+  local response
+  response=$(curl -s -X POST "${API_DOMAIN}/api/accounts/${ACCOUNT_ID}/messages/${message_id}" \
+    -H "Authorization: Bearer ${token}" \
+    -H "Content-Type: application/json" \
+    -d "$json_payload")
+
+  echo "$response" | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+status = data.get('status', {})
+code = status.get('code', 'unknown')
+desc = status.get('description', '')
+if code == 200:
+    msg_data = data.get('data', {})
+    print(f'Replied: {msg_data.get(\"subject\", \"\")}')
+    print(f'To: {msg_data.get(\"toAddress\", \"\")}')
+    print(f'Message ID: {msg_data.get(\"messageId\", \"\")}')
+    print(f'Threaded with: ${message_id}')
+else:
+    print(f'Error {code}: {desc}')
+    print(json.dumps(data, indent=2))
+"
+}
+
+# Main dispatch
+case "${1:-help}" in
+  inbox)   cmd_inbox "${2:-10}" ;;
+  unread)  cmd_unread "${2:-10}" ;;
+  read)
+    if [[ $# -lt 3 ]]; then
+      echo "Usage: zohomail read <folderId> <messageId>" >&2
+      exit 1
+    fi
+    cmd_read "$2" "$3"
+    ;;
+  mark-read)
+    if [[ $# -lt 2 ]]; then
+      echo "Usage: zohomail mark-read <messageId>" >&2
+      exit 1
+    fi
+    cmd_mark_read "$2"
+    ;;
+  mark-processed)
+    if [[ $# -lt 2 ]]; then
+      echo "Usage: zohomail mark-processed <messageId>" >&2
+      exit 1
+    fi
+    cmd_mark_processed "$2"
+    ;;
+  json)    cmd_json "${2:-10}" ;;
+  send)
+    shift
+    cmd_send "$@"
+    ;;
+  reply)
+    shift
+    cmd_reply "$@"
+    ;;
+  token)   cmd_token ;;
+  help|*)
+    echo "Usage: zohomail <command> [args]"
+    echo ""
+    echo "Commands:"
+    echo "  inbox [limit]                  List recent emails (default: 10)"
+    echo "  unread [limit]                 List unread emails only"
+    echo "  read <folderId> <messageId>    Read full email content"
+    echo "  send <to> <subject> <body>     Send a new email"
+    echo "  send --to <email> --subject <subj> [--body <content>] [--from <email>] [--html]"
+    echo "  reply <messageId> <to> [subject] <body>  Reply to an email (threads properly)"
+    echo "  reply --message-id <id> --to <email> [--body <content>] [--from <email>] [--html]"
+    echo "  mark-read <messageId>          Mark an email as read"
+    echo "  json [limit]                   Raw JSON inbox (for agent parsing)"
+    echo "  token                          Print current access token"
+    ;;
+esac

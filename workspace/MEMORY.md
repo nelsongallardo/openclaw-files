@@ -38,4 +38,7 @@ This expectation is firm: Nelson wants the coder to handle coding tasks end‑to
 ### Be proactive, not reactive (2026-03-25)
 When Nelson reports a problem or asks a question, act immediately. Don't ask him to run commands he can't access. Don't suggest solutions that require his manual intervention. Fix it myself. If I identify an issue (like rate limits), research it, diagnose it, and implement the fix without back-and-forth. Nelson wants an assistant who acts, not one who asks for permission to act.
 
+### Communication actions must preserve identity and context (2026-03-31)
+A convenience shortcut is not acceptable if it changes sender identity or breaks conversation context. When acting on behalf of Nelson or a business identity, use the correct account/channel and preserve reply threading properly. The operational rule lives in `AGENTS.md`; keep this here as the learned lesson after the email mistake.
+
 

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rome Marathon Trip 2026 — Expense Report</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #0f0f0f; color: #e0e0e0; padding: 20px; max-width: 1100px; margin: 0 auto; }
+  h1 { text-align: center; font-size: 2em; margin-bottom: 5px; color: #fff; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 30px; font-size: 0.95em; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
+  .card { background: #1a1a1a; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #2a2a2a; }
+  .card .label { font-size: 0.8em; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .card .value { font-size: 1.8em; font-weight: 700; color: #4fc3f7; }
+  section { background: #1a1a1a; border-radius: 12px; padding: 25px; margin-bottom: 25px; border: 1px solid #2a2a2a; }
+  section h2 { font-size: 1.3em; margin-bottom: 15px; color: #fff; border-bottom: 1px solid #333; padding-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+  th { text-align: left; padding: 10px 12px; background: #222; color: #aaa; font-weight: 600; text-transform: uppercase; font-size: 0.75em; letter-spacing: 0.5px; }
+  td { padding: 10px 12px; border-bottom: 1px solid #222; }
+  tr:hover td { background: #1f1f1f; }
+  .amt { text-align: right; font-variant-numeric: tabular-nums; }
+  .positive { color: #66bb6a; }
+  .negative { color: #ef5350; }
+  .settlement { display: flex; align-items: center; gap: 10px; padding: 14px 0; border-bottom: 1px solid #222; }
+  .settlement:last-child { border: none; }
+  .settlement .from { color: #ef5350; font-weight: 600; min-width: 80px; text-align: right; }
+  .settlement .arrow { color: #666; font-size: 1.4em; }
+  .settlement .to { color: #66bb6a; font-weight: 600; min-width: 80px; }
+  .settlement .samount { color: #4fc3f7; font-weight: 700; font-size: 1.1em; margin-left: auto; }
+  .chart-container { position: relative; max-height: 350px; margin: 10px 0; }
+  .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 700px) { .chart-row { grid-template-columns: 1fr; } }
+  .no-warnings { background: #0a2a0a; border: 1px solid #388e3c; border-radius: 8px; padding: 15px; margin-bottom: 25px; color: #81c784; text-align: center; }
+  .small { font-size: 0.8em; color: #888; }
+  .footer { text-align: center; color: #555; font-size: 0.8em; margin-top: 30px; padding: 20px; }
+  .highlight-box { background: #1a1a2e; border: 1px solid #4fc3f7; border-radius: 10px; padding: 20px; margin-bottom: 25px; }
+  .highlight-box h3 { color: #4fc3f7; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<h1>🏛️ Rome Marathon Trip 2026</h1>
+<p class="subtitle">Expense report • 9 people • 17–24 March 2026 • All amounts in GBP</p>
+
+<div class="cards">
+  <div class="card"><div class="label">Total Spent</div><div class="value">£4,847</div></div>
+  <div class="card"><div class="label">Expenses</div><div class="value">36</div></div>
+  <div class="card"><div class="label">People</div><div class="value">9</div></div>
+  <div class="card"><div class="label">Already Settled</div><div class="value">£2,173</div></div>
+</div>
+
+<div class="no-warnings">✅ All splits check out — no math errors detected in the data.</div>
+
+<!-- WHO OWES WHO — FINAL -->
+<div class="highlight-box">
+  <h3>💸 Remaining Settlements Needed</h3>
+  <p class="small" style="margin-bottom:15px;">After accounting for all 36 expenses AND the 7 transfers already made. These are the <strong>only payments still needed</strong> to zero everyone out:</p>
+
+  <div class="settlement"><span class="from">alessia</span><span class="arrow">→</span><span class="to">anjana</span><span class="samount">£216.33</span></div>
+  <div class="settlement"><span class="from">menta</span><span class="arrow">→</span><span class="to">anjana</span><span class="samount">£162.13</span></div>
+  <div class="settlement"><span class="from">menta</span><span class="arrow">→</span><span class="to">edu</span><span class="samount">£46.41</span></div>
+  <div class="settlement"><span class="from">rhuari</span><span class="arrow">→</span><span class="to">edu</span><span class="samount">£177.75</span></div>
+  <div class="settlement"><span class="from">elza</span><span class="arrow">→</span><span class="to">edu</span><span class="samount">£151.68</span></div>
+  <div class="settlement"><span class="from">elza</span><span class="arrow">→</span><span class="to">nelson</span><span class="samount">£1.96</span></div>
+  <div class="settlement"><span class="from">rachel</span><span class="arrow">→</span><span class="to">nelson</span><span class="samount">£131.82</span></div>
+  <div class="settlement"><span class="from">vlad</span><span class="arrow">→</span><span class="to">nelson</span><span class="samount">£63.41</span></div>
+</div>
+
+<!-- BALANCE OVERVIEW -->
+<section>
+  <h2>📊 Balance Overview</h2>
+  <p class="small" style="margin-bottom:15px;">
+    <strong>Paid</strong> = what they fronted for group expenses.
+    <strong>Fair Share</strong> = their portion of all expenses they participated in.
+    <strong>Transfers</strong> = settlements already sent/received.
+    <strong>Balance</strong> = net position (positive = still owed, negative = still owes).
+  </p>
+  <table>
+    <thead><tr><th>Person</th><th class="amt">Paid (£)</th><th class="amt">Fair Share (£)</th><th class="amt">Transfers</th><th class="amt">Balance (£)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>anjana</strong></td><td class="amt">681.06</td><td class="amt">612.98</td><td class="amt">−310.38 sent</td><td class="amt positive">+378.46</td></tr>
+      <tr><td><strong>edu</strong></td><td class="amt">645.34</td><td class="amt">579.88</td><td class="amt">−310.38 sent</td><td class="amt positive">+375.84</td></tr>
+      <tr><td><strong>nelson</strong></td><td class="amt">3,007.77</td><td class="amt">637.92</td><td class="amt">+2,172.66 received</td><td class="amt positive">+197.19</td></tr>
+      <tr><td><strong>rachel</strong></td><td class="amt">166.21</td><td class="amt">608.41</td><td class="amt">−310.38 sent</td><td class="amt negative">−131.82</td></tr>
+      <tr><td><strong>elza</strong></td><td class="amt">152.77</td><td class="amt">616.79</td><td class="amt">−310.38 sent</td><td class="amt negative">−153.64</td></tr>
+      <tr><td><strong>rhuari</strong></td><td class="amt">107.62</td><td class="amt">595.75</td><td class="amt">−310.38 sent</td><td class="amt negative">−177.75</td></tr>
+      <tr><td><strong>menta</strong></td><td class="amt">86.70</td><td class="amt">605.62</td><td class="amt">−310.38 sent</td><td class="amt negative">−208.54</td></tr>
+      <tr><td><strong>alessia</strong></td><td class="amt">0.00</td><td class="amt">526.71</td><td class="amt">−310.38 sent</td><td class="amt negative">−216.33</td></tr>
+      <tr><td><strong>vlad</strong></td><td class="amt">0.00</td><td class="amt">63.55</td><td class="amt">—</td><td class="amt negative">−63.55</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CHARTS -->
+<section>
+  <h2>📈 Visual Breakdown</h2>
+  <div class="chart-row">
+    <div class="chart-container"><canvas id="categoryChart"></canvas></div>
+    <div class="chart-container"><canvas id="paidChart"></canvas></div>
+  </div>
+</section>
+
+<!-- SPENDING BY CATEGORY -->
+<section>
+  <h2>🏷️ Spending by Category</h2>
+  <table>
+    <thead><tr><th>Category</th><th class="amt">Amount (£)</th><th class="amt">% of Total</th></tr></thead>
+    <tbody>
+      <tr><td>🏠 Airbnb</td><td class="amt">2,483.00</td><td class="amt">51.2%</td></tr>
+      <tr><td>🍽️ Dining (dinners, lunches, brunch)</td><td class="amt">788.36</td><td class="amt">16.3%</td></tr>
+      <tr><td>🍺 Drinks (aperols, beers, fernet, etc.)</td><td class="amt">470.01</td><td class="amt">9.7%</td></tr>
+      <tr><td>(unlabelled expenses)</td><td class="amt">382.59</td><td class="amt">7.9%</td></tr>
+      <tr><td>🚕 Transport (uber, vans, taxi)</td><td class="amt">289.44</td><td class="amt">6.0%</td></tr>
+      <tr><td>🏛️ Tourist tax</td><td class="amt">208.00</td><td class="amt">4.3%</td></tr>
+      <tr><td>🎟️ Coliseum tickets</td><td class="amt">119.19</td><td class="amt">2.5%</td></tr>
+      <tr><td>📦 Other (locker, marathon supplies, Les Etoiles)</td><td class="amt">106.88</td><td class="amt">2.2%</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ALL 36 EXPENSES -->
+<section>
+  <h2>📝 All 36 Expenses</h2>
+  <div style="overflow-x:auto;">
+  <table>
+    <thead><tr><th>Date</th><th>Paid By</th><th>Purpose</th><th class="amt">Amount</th><th class="amt">£ GBP</th><th>Split Between</th></tr></thead>
+    <tbody>
+      <tr><td>17 Mar</td><td>nelson</td><td>AIRBNB</td><td class="amt">£2,483</td><td class="amt">2,483.00</td><td>8 people (£310.38 each)</td></tr>
+      <tr><td>21 Mar</td><td>anjana</td><td>Airport trip</td><td class="amt">€42</td><td class="amt">36.44</td><td>anjana, rachel, nelson</td></tr>
+      <tr><td>21 Mar</td><td>rhuari</td><td>Saturday Brunch</td><td class="amt">€53.80</td><td class="amt">46.67</td><td>anjana, elza, rhuari, rachel</td></tr>
+      <tr><td>21 Mar</td><td>rhuari</td><td>Aperols Friday night</td><td class="amt">€28</td><td class="amt">24.29</td><td>elza, rachel, anjana, rhuari</td></tr>
+      <tr><td>21 Mar</td><td>menta</td><td>Lunch</td><td class="amt">€84</td><td class="amt">72.87</td><td>nelson, menta</td></tr>
+      <tr><td>21 Mar</td><td>nelson</td><td>Uber</td><td class="amt">€30</td><td class="amt">26.03</td><td>6 people</td></tr>
+      <tr><td>21 Mar</td><td>elza</td><td>Aperols & Coffees at art gallery</td><td class="amt">€32</td><td class="amt">27.76</td><td>5 people</td></tr>
+      <tr><td>21 Mar</td><td>edu</td><td>Cosas para la maratón</td><td class="amt">€31.20</td><td class="amt">27.07</td><td>edu, menta, nelson</td></tr>
+      <tr><td>21 Mar</td><td>anjana</td><td>2 uber vans</td><td class="amt">€80</td><td class="amt">69.40</td><td>6 people</td></tr>
+      <tr><td>21 Mar</td><td>anjana</td><td>⚠️ (no description)</td><td class="amt">€336.75</td><td class="amt">292.15</td><td>9 people incl. vlad</td></tr>
+      <tr><td>21 Mar</td><td>rachel</td><td>Uber</td><td class="amt">€18.29</td><td class="amt">15.87</td><td>nelson, anjana, menta, rachel</td></tr>
+      <tr><td>22 Mar</td><td>rhuari</td><td>Aperol & beer</td><td class="amt">€21</td><td class="amt">18.24</td><td>rachel, elza, rhuari</td></tr>
+      <tr><td>22 Mar</td><td>elza</td><td>Fernet</td><td class="amt">€23</td><td class="amt">19.98</td><td>nelson, anjana, elza, rhuari</td></tr>
+      <tr><td>22 Mar</td><td>elza</td><td>Uber</td><td class="amt">€16.80</td><td class="amt">14.59</td><td>edu, rhuari, elza, alessia</td></tr>
+      <tr><td>23 Mar</td><td>rhuari</td><td>Uber</td><td class="amt">€21.24</td><td class="amt">18.42</td><td>5 people</td></tr>
+      <tr><td>23 Mar</td><td>edu</td><td>Lunch</td><td class="amt">€187</td><td class="amt">162.14</td><td>6 people</td></tr>
+      <tr><td>23 Mar</td><td>anjana</td><td>Drinks</td><td class="amt">€200</td><td class="amt">173.42</td><td>8 people</td></tr>
+      <tr><td>23 Mar</td><td>anjana</td><td>Uber</td><td class="amt">€16.50</td><td class="amt">14.31</td><td>nelson, anjana, rachel, menta</td></tr>
+      <tr><td>23 Mar</td><td>edu</td><td>Marathon day dinner</td><td class="amt">€349</td><td class="amt">302.61</td><td>9 people incl. vlad</td></tr>
+      <tr><td>23 Mar</td><td>rachel</td><td>Brick drinks</td><td class="amt">€116</td><td class="amt">100.58</td><td>8 people</td></tr>
+      <tr><td>23 Mar</td><td>anjana</td><td>Beers</td><td class="amt">€35</td><td class="amt">30.35</td><td>vlad, nelson, edu, anjana, menta</td></tr>
+      <tr><td>23 Mar</td><td>anjana</td><td>Drinks</td><td class="amt">€30</td><td class="amt">26.01</td><td>5 people</td></tr>
+      <tr><td>23 Mar</td><td>anjana</td><td>Uber</td><td class="amt">€13</td><td class="amt">11.27</td><td>elza, rachel</td></tr>
+      <tr><td>23 Mar</td><td>rachel</td><td>Les Etoiles</td><td class="amt">€35</td><td class="amt">30.35</td><td>5 people</td></tr>
+      <tr><td>23 Mar</td><td>nelson</td><td>Van home</td><td class="amt">£40</td><td class="amt">40.00</td><td>5 people</td></tr>
+      <tr><td>23 Mar</td><td>anjana</td><td>Uber</td><td class="amt">€17</td><td class="amt">14.74</td><td>4 people</td></tr>
+      <tr><td>24 Mar</td><td>edu</td><td>Uber to Last Dinner</td><td class="amt">£11.49</td><td class="amt">11.49</td><td>edu, alessia, rhuari, elza</td></tr>
+      <tr><td>24 Mar</td><td>edu</td><td>Uber Maxi Van</td><td class="amt">£9.32</td><td class="amt">9.32</td><td>9 people incl. vlad</td></tr>
+      <tr><td>24 Mar</td><td>edu</td><td>Uber from Fancy Restaurant</td><td class="amt">£13.52</td><td class="amt">13.52</td><td>edu, rhuari, alessia, elza</td></tr>
+      <tr><td>24 Mar</td><td>rachel</td><td>Uber Piatto Romano</td><td class="amt">€22.45</td><td class="amt">19.41</td><td>menta, rachel, anjana, nelson</td></tr>
+      <tr><td>24 Mar</td><td>anjana</td><td>Locker</td><td class="amt">€15</td><td class="amt">12.97</td><td>5 people</td></tr>
+      <tr><td>24 Mar</td><td>nelson</td><td>Dinner</td><td class="amt">€290</td><td class="amt">250.74</td><td>8 people</td></tr>
+      <tr><td>24 Mar</td><td>nelson</td><td>Tourist tax</td><td class="amt">£208</td><td class="amt">208.00</td><td>8 people</td></tr>
+      <tr><td>24 Mar</td><td>menta</td><td>Taxi home</td><td class="amt">€16</td><td class="amt">13.83</td><td>edu, alessia, menta, rachel</td></tr>
+      <tr><td>24 Mar</td><td>elza</td><td>⚠️ (no description)</td><td class="amt">€104.60</td><td class="amt">90.44</td><td>8 people</td></tr>
+      <tr><td>24 Mar</td><td>edu</td><td>Coliseum tickets</td><td class="amt">€137.85</td><td class="amt">119.19</td><td>menta, edu, rachel</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- TRANSFERS -->
+<section>
+  <h2>🔄 7 Transfers Already Made</h2>
+  <p class="small" style="margin-bottom:12px;">These were Airbnb settlements sent to Nelson shortly after booking.</p>
+  <table>
+    <thead><tr><th>Date</th><th>From</th><th>To</th><th class="amt">Amount</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>17 Mar</td><td>rhuari</td><td>nelson</td><td class="amt">£310.38</td><td>Debt settlement</td></tr>
+      <tr><td>17 Mar</td><td>alessia</td><td>nelson</td><td class="amt">£310.38</td><td>Debt settlement</td></tr>
+      <tr><td>17 Mar</td><td>anjana</td><td>nelson</td><td class="amt">£310.38</td><td>Debt settlement</td></tr>
+      <tr><td>17 Mar</td><td>edu</td><td>nelson</td><td class="amt">£310.38</td><td>Debt settlement</td></tr>
+      <tr><td>17 Mar</td><td>menta</td><td>nelson</td><td class="amt">£310.38</td><td>Debt settlement</td></tr>
+      <tr><td>19 Mar</td><td>rachel</td><td>nelson</td><td class="amt">£310.38</td><td>Debt settlement</td></tr>
+      <tr><td>21 Mar</td><td>elza</td><td>nelson</td><td class="amt">£310.38</td><td>Airbnb</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- THINGS TO REVIEW -->
+<section>
+  <h2>⚠️ Things to Review</h2>
+  <table>
+    <thead><tr><th>#</th><th>Item</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Anjana's €336.75 expense (21 Mar)</strong> — no description. It's the 4th biggest expense, split 9 ways with uneven amounts. What was this?</td></tr>
+      <tr><td>2</td><td><strong>Elza's €104.60 expense (24 Mar)</strong> — also no description. Split equally 8 ways at €13.08 each. What was this for?</td></tr>
+      <tr><td>3</td><td><strong>Vlad</strong> only appears in 3 expenses — was he only there for one evening? His total share is just £63.55.</td></tr>
+      <tr><td>4</td><td><strong>Anjana's €336.75</strong> has unequal splits (ranging from €26.30 to €65.90). This is unusual — was it an itemised dinner bill?</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="footer">
+  Generated by Claudillo 🦎 • Data from Settle Up export • All EUR→GBP conversions use the exchange rates from the original file<br>
+  Settle Up logic: Balance = (Amount Paid) − (Fair Share) + (Transfers Sent) − (Transfers Received)
+</div>
+
+<script>
+const catCtx = document.getElementById('categoryChart').getContext('2d');
+new Chart(catCtx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Airbnb','Dining','Drinks','(Unlabelled)','Transport','Tourist Tax','Coliseum','Other'],
+    datasets: [{
+      data: [2483, 788.36, 470.01, 382.59, 289.44, 208, 119.19, 106.88],
+      backgroundColor: ['#4fc3f7','#66bb6a','#ffb74d','#78909c','#ef5350','#ab47bc','#26a69a','#8d6e63']
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+      legend: { position: 'bottom', labels: { color: '#ccc', padding: 12 } },
+      title: { display: true, text: 'Spending by Category', color: '#fff', font: { size: 14 } }
+    }
+  }
+});
+
+const paidCtx = document.getElementById('paidChart').getContext('2d');
+new Chart(paidCtx, {
+  type: 'bar',
+  data: {
+    labels: ['nelson','anjana','edu','rachel','elza','rhuari','menta','alessia','vlad'],
+    datasets: [
+      { label: 'Paid', data: [3007.77,681.06,645.34,166.21,152.77,107.62,86.70,0,0], backgroundColor: '#4fc3f7' },
+      { label: 'Fair Share', data: [637.92,612.98,579.88,608.41,616.79,595.75,605.62,526.71,63.55], backgroundColor: '#ef535080' }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+      legend: { position: 'bottom', labels: { color: '#ccc' } },
+      title: { display: true, text: 'Paid vs Fair Share (£)', color: '#fff', font: { size: 14 } }
+    },
+    scales: {
+      x: { ticks: { color: '#aaa' }, grid: { color: '#222' } },
+      y: { ticks: { color: '#aaa', callback: v => '£' + v }, grid: { color: '#222' } }
+    }
+  }
+});
+</script>
+</body>
+</html>
