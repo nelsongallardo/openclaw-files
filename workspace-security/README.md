@@ -1,6 +1,6 @@
 # Security Agent Workspace
 
-Nightly security auditor running on `ollama/llama3:8b` (local, offline-capable).
+Nightly security auditor running on `chutes/Qwen/Qwen3.5-397B-A17B-TEE`.
 
 ## What it does
 
@@ -26,7 +26,7 @@ Nightly security auditor running on `ollama/llama3:8b` (local, offline-capable).
 ## Prerequisites
 
 - **LuLu** installed: `brew install --cask lulu` (or from [objective-see.org](https://objective-see.org/products/lulu.html))
-- **Ollama** running with `llama3:8b` model pulled
+- **Chutes** API access configured
 
 ## Manual run
 

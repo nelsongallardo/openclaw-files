@@ -8,7 +8,7 @@
       "name": "security-audit-lulu-logs",
       "enabled": true,
       "createdAtMs": 1773083859141,
-      "updatedAtMs": 1775007078253,
+      "updatedAtMs": 1776044000829,
       "schedule": {
         "kind": "cron",
         "expr": "30 2 * * *"
@@ -27,87 +27,14 @@
         "to": "-1003835107764:topic:2"
       },
       "state": {
-        "nextRunAtMs": 1775093400000,
-        "lastRunAtMs": 1775007000010,
+        "nextRunAtMs": 1776130200000,
+        "lastRunAtMs": 1776043800010,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 78243,
+        "lastDurationMs": 200819,
         "lastDeliveryStatus": "delivered",
         "consecutiveErrors": 0,
         "lastDelivered": true
-      }
-    },
-    {
-      "id": "a8322c7b-210a-47f5-9e04-c4f557ca2ea6",
-      "agentId": "quick",
-      "sessionKey": "agent:quick:telegram:group:-1003835107764:topic:8",
-      "name": "daily-tech-news",
-      "enabled": false,
-      "createdAtMs": 1773499976455,
-      "updatedAtMs": 1774774993479,
-      "schedule": {
-        "everyMs": 86400000,
-        "kind": "every",
-        "anchorMs": 1774765901511
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Summarize the latest tech news from the past 24 hours.",
-        "model": "ollama/gpt-oss:20b",
-        "timeoutSeconds": 300,
-        "thinking": "Please use web_search to gather tech news from the last 24 hours and produce a brief summary."
-      },
-      "delivery": {
-        "mode": "announce",
-        "channel": "telegram",
-        "to": "-1003835107764:topic:194",
-        "bestEffort": false
-      },
-      "state": {
-        "lastRunAtMs": 1774765800005,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 144079,
-        "lastDelivered": true,
-        "lastDeliveryStatus": "delivered",
-        "consecutiveErrors": 0
-      },
-      "deleteAfterRun": false
-    },
-    {
-      "id": "eb362832-697a-4a78-b8cf-b31c806dae42",
-      "agentId": "analytics",
-      "sessionKey": "agent:analytics:telegram:group:-1003843555366:topic:1",
-      "name": "Weekly refresh: cuiz-ai dashboard",
-      "enabled": true,
-      "createdAtMs": 1773701090471,
-      "updatedAtMs": 1774850453372,
-      "schedule": {
-        "kind": "cron",
-        "expr": "0 7 * * 1",
-        "tz": "Europe/London"
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Refresh the cuiz-ai HTML dashboard in /Users/openclaw/.openclaw/workspace-analytics by running ./scripts/update_cuiz_dashboard.py from the workspace root. Do not change the script unless it is broken. Update the dashboard files in /Users/openclaw/.openclaw/workspace-analytics/dashboard. If the refresh succeeds, finish quietly. If it fails, report the failure with the concrete error.",
-        "timeoutSeconds": 600
-      },
-      "delivery": {
-        "mode": "none"
-      },
-      "state": {
-        "nextRunAtMs": 1775455200000,
-        "lastRunAtMs": 1774850400008,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 53364,
-        "lastDelivered": false,
-        "lastDeliveryStatus": "not-delivered",
-        "consecutiveErrors": 0
       }
     },
     {
@@ -117,7 +44,7 @@
       "name": "Daily OpenAI Codex rate limit monitor",
       "enabled": true,
       "createdAtMs": 1774453561665,
-      "updatedAtMs": 1775030496109,
+      "updatedAtMs": 1776067402477,
       "schedule": {
         "kind": "cron",
         "expr": "0 9 * * *",
@@ -135,44 +62,11 @@
         "mode": "none"
       },
       "state": {
-        "nextRunAtMs": 1775116800000,
-        "lastRunAtMs": 1775030400009,
+        "nextRunAtMs": 1776153600000,
+        "lastRunAtMs": 1776067200013,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 96100,
-        "lastDeliveryStatus": "not-delivered",
-        "consecutiveErrors": 0,
-        "lastDelivered": false
-      }
-    },
-    {
-      "id": "64b797e9-241f-43ab-8a4f-a3cdc9f0c75a",
-      "agentId": "quick",
-      "sessionKey": "agent:quick:cron:a8322c7b-210a-47f5-9e04-c4f557ca2ea6",
-      "name": "daily-tech-news",
-      "enabled": true,
-      "createdAtMs": 1774683129589,
-      "updatedAtMs": 1775028671211,
-      "schedule": {
-        "expr": "30 7 * * *",
-        "kind": "cron",
-        "tz": "UTC"
-      },
-      "sessionTarget": "isolated",
-      "wakeMode": "now",
-      "payload": {
-        "kind": "agentTurn",
-        "message": "Brief the latest tech news from the last 24 hours."
-      },
-      "delivery": {
-        "mode": "announce"
-      },
-      "state": {
-        "nextRunAtMs": 1775115000000,
-        "lastRunAtMs": 1775028600009,
-        "lastRunStatus": "ok",
-        "lastStatus": "ok",
-        "lastDurationMs": 71202,
+        "lastDurationMs": 202464,
         "lastDeliveryStatus": "not-delivered",
         "consecutiveErrors": 0,
         "lastDelivered": false
@@ -185,7 +79,7 @@
       "name": "email-triage",
       "enabled": true,
       "createdAtMs": 1774750000000,
-      "updatedAtMs": 1775081834071,
+      "updatedAtMs": 1776068244749,
       "schedule": {
         "kind": "cron",
         "expr": "17 * * * *",
@@ -206,14 +100,14 @@
         "to": "8462098656"
       },
       "state": {
-        "nextRunAtMs": 1775085420000,
-        "lastRunAtMs": 1775081820011,
+        "nextRunAtMs": 1776071820000,
+        "lastRunAtMs": 1776068220009,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 14060,
-        "lastDelivered": false,
+        "lastDurationMs": 24740,
         "lastDeliveryStatus": "not-delivered",
-        "consecutiveErrors": 0
+        "consecutiveErrors": 0,
+        "lastDelivered": false
       }
     },
     {
@@ -223,7 +117,7 @@
       "name": "cuizai-gcp-alert-handler",
       "enabled": true,
       "createdAtMs": 1743465600000,
-      "updatedAtMs": 1775081960529,
+      "updatedAtMs": 1776069038784,
       "schedule": {
         "kind": "cron",
         "expr": "*/30 * * * *"
@@ -242,13 +136,194 @@
         "to": "-1003835107764:topic:12"
       },
       "state": {
-        "nextRunAtMs": 1775082600000,
-        "lastRunAtMs": 1775081898028,
+        "nextRunAtMs": 1776070800000,
+        "lastRunAtMs": 1776069000012,
         "lastRunStatus": "ok",
         "lastStatus": "ok",
-        "lastDurationMs": 62501,
-        "lastDelivered": true,
-        "lastDeliveryStatus": "delivered",
+        "lastDurationMs": 38772,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "a1c1a5bc-2edd-475c-8376-8a1bcf38f8f7",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:8462098656",
+      "name": "Keep gnelson85 and nensol85 tokens alive",
+      "description": "Weekly dummy gmail calls to keep both gog OAuth tokens alive",
+      "enabled": true,
+      "createdAtMs": 1775585662103,
+      "updatedAtMs": 1775980928135,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 0",
+        "tz": "Europe/London"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run these commands to keep both gog tokens alive:\n\nexec command:\"gog gmail search 'newer_than:1d' -a gnelson85@gmail.com --max 1 2>&1\"\nexec command:\"gog gmail search 'newer_than:1d' -a nensol85@gmail.com --max 1 2>&1\"\n\nIf either returns an error about invalid_grant or token revoked, report which account's token has expired and that Nelson needs to re-authenticate."
+      },
+      "delivery": {
+        "mode": "none"
+      },
+      "state": {
+        "nextRunAtMs": 1776585600000,
+        "lastRunAtMs": 1775980915850,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 12285,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      },
+      "failureAlert": {
+        "after": 1,
+        "channel": "telegram",
+        "to": "8462098656",
+        "mode": "announce"
+      }
+    },
+    {
+      "id": "eae39267-79ba-4d75-8f0b-e0f1e1b97760",
+      "agentId": "proddy",
+      "sessionKey": "agent:proddy:cron:product-report",
+      "name": "proddy-product-report",
+      "description": "Weekly CuizAI product analysis: query PostHog, take actions, write task files for coder",
+      "enabled": true,
+      "createdAtMs": 1776012000000,
+      "updatedAtMs": 1776061200056,
+      "schedule": {
+        "kind": "cron",
+        "expr": "10 7 * * 1",
+        "tz": "Europe/London"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "You are CuizAI's autonomous product manager. Analyze PostHog data, take direct actions where you can, and write task files for code changes the coder agent should make.\n\n## PHASE 1: DATA COLLECTION\n\nQuery PostHog MCP for these metrics:\n\n1. NORTH STAR — Weekly returning quiz generators:\n   Use posthog insight-get (id: 3819193). Get latest week + WoW change.\n\n2. ACTIVATION — Signup→first quiz (7d):\n   Use posthog insight-get (id: 3819192). Get conversion rate + trend.\n\n3. ACTIVATED USERS — Signup + completed + 2nd quiz within 7d:\n   Use posthog insight-get (id: 3819249). Get count by signup week.\n\n4. WEEKLY FUNNEL:\n   Query for: unique visitors (pageview), signups (user_signed_up), uploads (quiz_generated), quizzes completed (quiz_completed). Report each step with conversion rates.\n\n5. SHARE FEATURE — quiz_share_link_created and quiz_high_score_share_nudge_clicked events (7d).\n\n6. ANON CONVERSION — anon_quota_signup_modal_shown events (7d), broken down by source.\n\n7. SURVEY FEEDBACK — Post-Quiz Feedback survey (id: 0199fc6b-a1c5-0000-a512-19c96504ca48):\n   a) Use posthog survey-stats (id: 0199fc6b-a1c5-0000-a512-19c96504ca48) for shown/dismissed/sent counts and conversion rate over the past 7 days.\n   b) Use posthog query-run with HogQL to get actual responses from the past 7 days:\n      - Average quality rating (Q1, scale 1-10)\n      - Difficulty distribution (Q2: Too easy / Just right / Too hard)\n      - 'What would make you come back' distribution (Q3: Better question quality / More quiz features / Faster generation / Different question types)\n      - All open text feedback (Q4) — quote each response verbatim\n   The survey events are 'survey sent' with properties $survey_id and $survey_response. Query for events where $survey_id = '0199fc6b-a1c5-0000-a512-19c96504ca48'.\n\n## PHASE 2: ANALYSIS & ACTIONS\n\nAfter collecting data, analyze for actionable insights.\n\nDirect actions (do these yourself):\n- If a PostHog insight is broken or returning no data, try to fix it via posthog insight-update\n- If you spot a new event pattern worth tracking, create a new insight via posthog insight-create-from-query\n\nWrite task files when ANY of these triggers fire:\n- Funnel drop-off > 20% WoW at any step → task to investigate and fix the UI step\n- Activation rate drops below 15% → task to improve onboarding flow\n- Share feature usage < 5 events/week → task to make share CTA more prominent in quiz results\n- Anon conversion modal shown but conversion < 10% → task to improve modal copy/design\n- Any metric shows 3+ weeks of continuous decline → task with analysis and proposed fix\n- New pattern spotted (e.g., users drop off at a specific quiz length) → task to investigate\n- Average quality rating drops below 7.0 → task to investigate quiz generation quality (check prompts, model, parsing)\n- 'Too hard' or 'Too easy' exceeds 40% of responses → task to adjust difficulty defaults or add difficulty selector prominence\n- One 'what would make you come back' option gets >50% of votes → task to prioritize that feature\n- Open text feedback mentions a specific bug or repeated complaint → task to investigate and fix\n\nTask file format — write to /Users/openclaw/.openclaw/proddy-tasks/YYYY-MM-DD_HHmm_<slug>.json:\n{\n  \"created\": \"ISO-8601\",\n  \"source\": \"proddy-product\",\n  \"category\": \"funnel_optimization | onboarding_fix | ui_improvement | feature_experiment | bug_investigation\",\n  \"priority\": \"low | medium | high\",\n  \"title\": \"Short actionable title\",\n  \"analysis\": \"What the data shows — include actual numbers and trends\",\n  \"proposed_action\": \"Specific change to make. Be concrete: which component, what to change, why\",\n  \"project\": \"cuiz-ai\",\n  \"files_likely_affected\": [\"relative/path/from/project/root\"],\n  \"acceptance_criteria\": \"How to verify the fix worked\",\n  \"data_snapshot\": { \"metric\": \"value\", \"wow_change\": \"+/-N%\" }\n}\n\nPriority: high = metric dropped >30% WoW or activation broken; medium = noticeable decline; low = optimization opportunity.\n\n## PHASE 3: REPORT\n\nSend a Telegram report with sections, numbers, WoW deltas (↑↓→).\n\nInclude a SURVEY section with: response rate, avg quality rating, difficulty breakdown, top 'come back' reason, and any notable open text quotes.\n\nEnd with:\n📋 Tasks created: N (list titles)\n✅ Direct actions: N (list what you did)\n⚡ No action needed (if everything healthy)",
+        "lightContext": true,
+        "timeoutSeconds": 600
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "8462098656"
+      },
+      "state": {
+        "nextRunAtMs": 1776665400000,
+        "lastRunAtMs": 1776060600015,
+        "lastRunStatus": "error",
+        "lastStatus": "error",
+        "lastDurationMs": 600041,
+        "lastError": "cron: job execution timed out",
+        "lastErrorReason": "timeout",
+        "lastDeliveryStatus": "unknown",
+        "consecutiveErrors": 1
+      }
+    },
+    {
+      "id": "8e061272-27ea-4e9d-95e6-9e0d0edada91",
+      "agentId": "proddy",
+      "sessionKey": "agent:proddy:cron:seo-report",
+      "name": "proddy-seo-report",
+      "description": "Weekly CuizAI SEO analysis: query GSC, identify opportunities, write task files for coder",
+      "enabled": true,
+      "createdAtMs": 1776012000000,
+      "updatedAtMs": 1776062297161,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 7 * * 1",
+        "tz": "Europe/London"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "You are CuizAI's autonomous SEO manager. Analyze GSC data, identify issues and opportunities, and write task files for code changes the coder should make. The site is cuiz-ai.com.\n\n## PHASE 1: DATA COLLECTION\n\nFirst, call gsc list_properties to find the exact site_url.\n\nThen query:\n\n1. PERFORMANCE — gsc get_performance_overview (days=7) + gsc compare_search_periods (WoW). Get clicks, impressions, CTR, position + deltas.\n\n2. TOP QUERIES (30) — gsc get_search_analytics dimensions='query', days=28, row_limit=30.\n\n3. TOP PAGES (30) — gsc get_search_analytics dimensions='page', days=28, row_limit=30.\n\n4. INDEXING HEALTH — gsc check_indexing_issues on: /, /upload, /sample-quiz, /sample-flashcards, /pricing, /blog, /sample/biology-quiz, /sample/history-quiz, /sample/ai-quiz, /sample/psychology-quiz, /sample/spanish-vocab-flashcards.\n\n5. RICH RESULTS — gsc inspect_url_enhanced on / and /sample-quiz.\n\n## PHASE 2: ANALYSIS & ACTIONS\n\nApply these rules to write task files to /Users/openclaw/.openclaw/proddy-tasks/:\n\n### Opportunity queries → Meta optimization tasks\nFind queries with: impressions > 10, CTR < 5%, position 5-20. For EACH opportunity (up to 5 per week), write a task file telling the coder to update the matching page's <title> and meta description to better target the query. Include the exact query, current ranking, and suggested title/description.\n\n### Indexing issues → Fix tasks\nIf any key URL is not indexed or has crawl errors, write a task file with the specific issue and fix.\n\n### Structured data errors → Fix tasks\nIf rich results check shows errors, write a task file naming the exact error and which component to fix (StructuredData.tsx or page layout).\n\n### Content gap detection\nLook at queries landing on homepage or generic pages that suggest demand for topics we don't have a dedicated /sample/ page for (e.g., 'chemistry quiz', 'math flashcards'). Write a LOW priority task to create a new subject page — include the query volume evidence.\n\n### Blog canary\nFrom top pages (row_limit=50), find /blog/ URLs getting impressions. If a blog post has impressions > 50 but CTR < 3%, write a task to optimize its title/meta.\n\n### Direct actions:\n- If a URL should be indexed but isn't, try gsc submit_sitemap or log it for manual review\n- NEVER make code changes yourself — always write task files\n\nTask file format — write to /Users/openclaw/.openclaw/proddy-tasks/YYYY-MM-DD_HHmm_<slug>.json:\n{\n  \"created\": \"ISO-8601\",\n  \"source\": \"proddy-seo\",\n  \"category\": \"meta_optimization | structured_data_fix | indexing_fix | new_content | redirect_fix | blog_optimization\",\n  \"priority\": \"low | medium | high\",\n  \"title\": \"Short actionable title\",\n  \"analysis\": \"What GSC data shows — include numbers\",\n  \"proposed_action\": \"Specific change: e.g. 'Update title of /sample/biology-quiz from X to Y to target query Z'\",\n  \"project\": \"cuiz-ai\",\n  \"target_url\": \"https://cuiz-ai.com/path\",\n  \"target_queries\": [\"query1\", \"query2\"],\n  \"files_likely_affected\": [\"app/sample/[slug]/subjects.ts\"],\n  \"acceptance_criteria\": \"Position for query X should improve from Y over 2-4 weeks\",\n  \"data_snapshot\": { \"query\": \"...\", \"clicks\": 0, \"impressions\": 0, \"ctr\": \"0%\", \"position\": 0 }\n}\n\nPriority: high = key page not indexed or structured data error on homepage; medium = opportunity query with good impressions; low = content gap or minor optimization.\n\n## PHASE 3: REPORT\n\nSend Telegram report with sections, WoW deltas (↑↓→).\n\nEnd with:\n📋 Tasks created: N (list titles)\n✅ Direct actions: N (list what you did)\n⚡ No action needed (if SEO is healthy)",
+        "lightContext": true,
+        "timeoutSeconds": 600
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "8462098656"
+      },
+      "state": {
+        "nextRunAtMs": 1776666600000,
+        "lastRunAtMs": 1776061853759,
+        "lastRunStatus": "error",
+        "lastStatus": "error",
+        "lastDurationMs": 443402,
+        "lastError": "GrammyError: Call to 'sendMessage' failed! (400: Bad Request: message is too long)",
+        "lastDeliveryStatus": "unknown",
+        "consecutiveErrors": 1
+      }
+    },
+    {
+      "id": "f4a91c28-7e3d-4b1a-9c56-2d8e47f10b93",
+      "agentId": "coder",
+      "sessionKey": "agent:coder:cron:proddy-task-executor",
+      "name": "proddy-task-executor",
+      "description": "Polls proddy-tasks/ and spawns Claude Code via ACP to execute each task autonomously",
+      "enabled": true,
+      "createdAtMs": 1776012000000,
+      "updatedAtMs": 1776069072478,
+      "schedule": {
+        "kind": "cron",
+        "expr": "*/30 * * * *"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Check for Proddy task files:\n\nexec command:\"ls /Users/openclaw/.openclaw/proddy-tasks/*.json 2>/dev/null\"\n\nIf no JSON files exist, reply with exactly HEARTBEAT_OK.\n\nFor each task file found, read it and process it:\n\n1. Read the task JSON to understand what needs to be done\n2. You MUST use sessions_spawn with runtime \"acp\" and agentId \"claude\". Do NOT investigate or write code yourself.\n\n   Call sessions_spawn with these EXACT parameters:\n   - runtime: \"acp\"\n   - agentId: \"claude\"\n   - mode: \"session\"\n   - thread: true\n   - cwd: \"/Users/openclaw/projects/cuiz-ai/quiz-ai-generator-frontend\"\n   - streamTo: \"parent\"\n   - task: Build the task description from the JSON fields. Include:\n     a) The full analysis and proposed_action from the task file\n     b) The files_likely_affected as starting points\n     c) The acceptance_criteria as the definition of done\n     d) These instructions:\n        - First explore the codebase and understand the current state\n        - Make the changes described in proposed_action\n        - Run the dev server and verify the change works (next dev)\n        - Run type checking (npx tsc --noEmit) to ensure no errors\n        - Commit with a clear message referencing the data-driven reason\n        - Create a PR with title and description explaining the change and the data behind it\n        - When done run: openclaw system event --text 'Proddy task done: <title from task file>' --mode now\n\n3. After spawning Claude Code, move the task file to archive:\n   exec command:\"mv /Users/openclaw/.openclaw/proddy-tasks/<filename>.json /Users/openclaw/.openclaw/proddy-tasks/archive/\"\n\n4. If multiple task files exist, process them ONE AT A TIME (spawn, wait for completion, then next). Do NOT spawn multiple sessions in parallel.\n\n5. After all tasks are processed, report: \"Executed N proddy tasks: <list titles>\"",
+        "lightContext": true,
+        "timeoutSeconds": 900
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "-1003835107764:topic:12"
+      },
+      "state": {
+        "nextRunAtMs": 1776070800000,
+        "lastRunAtMs": 1776069038784,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 33694,
+        "lastDelivered": false,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "c7dae5e1-ae9b-4c0e-98d4-3dc57bfd42da",
+      "name": "Memory Dreaming Promotion",
+      "description": "[managed-by=memory-core.short-term-promotion] Promote weighted short-term recalls into MEMORY.md (limit=10, minScore=0.800, minRecallCount=3, minUniqueQueries=3, recencyHalfLifeDays=14, maxAgeDays=30).",
+      "enabled": true,
+      "createdAtMs": 1775598857477,
+      "updatedAtMs": 1776045709023,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "next-heartbeat",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "__openclaw_memory_core_short_term_promotion_dream__"
+      },
+      "state": {
+        "nextRunAtMs": 1776132000000,
+        "lastRunAtMs": 1776045709023,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 0,
+        "lastDeliveryStatus": "not-requested",
         "consecutiveErrors": 0
       }
     }

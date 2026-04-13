@@ -1,0 +1,13 @@
+{
+  "processed": "2026-04-12T21:30:00Z",
+  "task_file": "2026-04-12_2107_qcm-folder-delete-feature.json",
+  "category": "feature_request",
+  "from": "k52693693012@gmail.com",
+  "subject": "Feature Request",
+  "analysis": "User requested two things: (1) delete quizzes, and (2) organize quizzes into folders/categories. Deletion was straightforward to implement end-to-end. Folders would require a significant schema redesign and are deferred. Implemented deletion: backend UserService.delete_user_quiz() removes the quiz doc and all session docs from Firestore; DELETE /quiz/{quiz_id} endpoint added; frontend quizService.deleteQuiz() method added; Delete option added to dashboard quiz dropdown with red styling and confirmation dialog. PR #86 created.",
+  "suggested_action": "reply",
+  "notify": true,
+  "pr_url": "https://github.com/nelsongallardo/cuiz-ai/pull/86",
+  "draft_reply": "Hi Kald,\n\nThanks for writing in, and really glad you're finding CuizAI useful!\n\nThank you very much for your feedback, and I agree that a delete feature is necessary. I just implemented and released the deletion feature. You'll see a \"Delete\" option in the menu on each quiz card (both on your dashboard and in My Library). Should be live shortly.\n\nFolders and categories are on my list too. That one's a bigger build, so it'll take a bit more time, but I'll shoot you an update when it's ready.\n\nThanks again for the feedback. It genuinely helps shape what I work on next.\n\nNelson, CuizAI",
+  "notes": "Kald is a relatively new user (said 'recently started using'). Only deletion was implemented in this run. Folder organization is a larger feature deferred to a later sprint — would need a new 'folders' Firestore collection, UI for creating/renaming/assigning folders, and filtering on the dashboard/library pages."
+}

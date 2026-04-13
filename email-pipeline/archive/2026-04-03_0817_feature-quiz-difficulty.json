@@ -1,0 +1,13 @@
+{
+  "processed": "2026-04-03T00:00:00Z",
+  "task_file": "2026-04-03_0817_feature-quiz-difficulty.json",
+  "category": "feature_request",
+  "from": "fabien.gourmelen31@gmail.com",
+  "subject": "Re: Re: Answers",
+  "analysis": "Fabien suggested adding back a difficulty level option for quizzes. Investigation confirmed difficulty was not present in the current codebase — the LLM prompt hardcoded a 50/50 medium/hard split. Implemented full-stack: backend accepts a 'difficulty' field (easy/medium/hard, default medium) in DocumentProcessRequest, passes it through the processing pipeline to the LLM dispatcher, which now uses a dynamic prompt distribution (Easy: 60% recall + 40% medium; Medium: 50% medium + 50% hard unchanged; Hard: 30% medium + 70% hard). Frontend adds an Easy/Medium/Hard radio button selector to the Options page. Branch pushed: email/2026-04-03-quiz-difficulty. PR ready at https://github.com/nelsongallardo/cuiz-ai/pull/new/email/2026-04-03-quiz-difficulty",
+  "suggested_action": "reply",
+  "notify": true,
+  "pr_url": "https://github.com/nelsongallardo/cuiz-ai/pull/new/email/2026-04-03-quiz-difficulty",
+  "draft_reply": "Bonjour Fabien,\n\nMerci beaucoup pour la suggestion — vous avez raison, c'est un bon ajout pour les utilisateurs qui veulent contrôler le niveau de leurs questions !\n\nJ'ai justement implémenté cette fonctionnalité : les utilisateurs peuvent maintenant choisir entre Facile, Moyen et Difficile directement sur la page des options avant de générer leur quiz. Le réglage Facile privilégie les questions de rappel et de compréhension de base, Moyen garde l'équilibre actuel, et Difficile oriente vers des questions d'analyse approfondie.\n\nLa mise à jour sera disponible très prochainement !\n\nBien cordialement,\nNelson – CuizAI",
+  "notes": "Fabien wrote in French — replied in French. Feature was straightforward: add difficulty param end-to-end (backend model → document processor → LLM dispatcher prompt → frontend options page). Default is 'medium' so existing behavior is unchanged."
+}

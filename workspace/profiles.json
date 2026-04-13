@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "ollama-local": {
+      "provider": "ollama",
+      "baseUrl": "http://localhost:11434",
+      "models": {
+        "default": "llama3.2",
+        "fast": "qwen2.5:7b",
+        "coding": "codellama:7b"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "created": "2026-04-13T03:01:00Z",
+  "source": "gcp-alert",
+  "category": "gcp_alert",
+  "from": "alerting-noreply@google.com",
+  "subject": "[ALERT - Critical] Error in CuizAI",
+  "message_id": "19d8495d2a619dd9",
+  "summary": "Cloud Run Revision cuiz-ai-api-00127-gcx showing elevated API errors (0.033 vs threshold 0.01). Error metric logging/user/cuiz-ai-api-errors exceeded threshold.",
+  "priority": "high",
+  "requires_code_change": true,
+  "project": "cuiz-ai",
+  "alert_details": {
+    "severity": "Critical",
+    "metric": "logging/user/cuiz-ai-api-errors",
+    "threshold": 0.01,
+    "value": 0.033333333333333333,
+    "service": "cuiz-ai-api",
+    "revision": "cuiz-ai-api-00127-gcx",
+    "location": "europe-west1",
+    "start_time": "2026-04-13T02:05:00Z"
+  },
+  "full_content": "Cloud Run Revision - logging/user/cuiz-ai-api-errors is above threshold of 0.01 with a value of 0.033333333333333333. Alert fired at April 13, 2026 at 2:05AM UTC."
+}

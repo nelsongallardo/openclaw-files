@@ -1,0 +1,13 @@
+{
+  "processed": "2026-04-02T15:30:00Z",
+  "task_file": "2026-04-02_1417_docx-download-bug.json",
+  "category": "bug_report",
+  "from": "Fabien Gourmelen",
+  "subject": "Re: Answers",
+  "analysis": "DOCX download bug: The DOCX export used file-saver's saveAs() which can fail silently on certain browsers (Safari/iOS, mobile browsers). Replaced with native anchor-element download (URL.createObjectURL + <a> click) which is universally reliable. The PDF download was already using a more robust approach (window.open + doc.save). Difficulty level selection: This was intentionally removed in commit fcf3593 (Mar 28) and replaced with a numeric question count selector. The backend now hardcodes quiz_type='med'. Some marketing/SEO pages still reference difficulty levels and should be updated separately.",
+  "suggested_action": "reply",
+  "notify": true,
+  "pr_url": "https://github.com/nelsongallardo/cuiz-ai/pull/82",
+  "draft_reply": "Bonjour Fabien,\n\nMerci beaucoup pour ton retour, c'est super utile !\n\nJ'ai trouvé et corrigé le bug du téléchargement DOCX. Le problème venait de la bibliothèque utilisée pour déclencher le téléchargement (file-saver) qui échouait silencieusement sur certains navigateurs. J'ai remplacé ça par une méthode de téléchargement native du navigateur, beaucoup plus fiable. Le fix est en cours de déploiement.\n\nPour la sélection des niveaux de difficulté, on a effectivement changé ça récemment — maintenant tu peux choisir directement le nombre de questions (de 5 à 100), ce qui donne plus de contrôle. Le niveau de difficulté est déterminé automatiquement par l'IA en fonction du contenu du document. Si cette fonctionnalité te manque vraiment, dis-le moi et je regarderai pour la remettre en option.\n\nMerci encore pour ton aide, ça améliore vraiment le produit !\n\nBien à toi,\nNelson - CuizAI",
+  "notes": "Two issues reported: (1) DOCX download broken - fixed by replacing file-saver with native browser download in PR #82. (2) Difficulty level selection missing - this was an intentional design change (commit fcf3593, Mar 28) replacing 3-tier difficulty with numeric question count. Some SEO/marketing pages still reference old difficulty levels and need updating separately."
+}

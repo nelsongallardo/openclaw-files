@@ -108,12 +108,16 @@ if 'data' not in data:
     print('No messages found')
     sys.exit(0)
 
+cutoff = (datetime.datetime.now() - datetime.timedelta(days=2)).timestamp()
+
 found = False
 for msg in data['data']:
     msg_id = msg.get('messageId', '')
     if msg_id in processed:
         continue
     ts = int(msg.get('receivedTime', '0')) / 1000
+    if ts < cutoff:
+        continue
     date = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M')
     sender = msg.get('sender', 'Unknown')
     subject = html.unescape(msg.get('subject', '(no subject)'))

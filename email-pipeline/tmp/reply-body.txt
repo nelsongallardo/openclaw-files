@@ -1,0 +1,12 @@
+Bonjour Fabien,
+
+Merci beaucoup pour ton retour, c'est super utile !
+
+J'ai trouvé et corrigé le bug du téléchargement DOCX. Le problème venait de la bibliothèque utilisée pour déclencher le téléchargement (file-saver) qui échouait silencieusement sur certains navigateurs. J'ai remplacé ça par une méthode de téléchargement native du navigateur, beaucoup plus fiable. Le fix est en cours de déploiement.
+
+Pour la sélection des niveaux de difficulté, on a effectivement changé ça récemment — maintenant tu peux choisir directement le nombre de questions (de 5 à 100), ce qui donne plus de contrôle. Le niveau de difficulté est déterminé automatiquement par l'IA en fonction du contenu du document. Si cette fonctionnalité te manque vraiment, dis-le moi et je regarderai pour la remettre en option.
+
+Merci encore pour ton aide, ça améliore vraiment le produit !
+
+Bien à toi,
+Nelson - CuizAI

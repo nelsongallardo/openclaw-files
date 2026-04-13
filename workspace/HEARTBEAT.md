@@ -60,7 +60,9 @@ Check for upcoming events in the next 2 hours. Notify if something's coming up.
 
 ## 4. Weather
 
-If it's morning (before 10am), check London weather. Only notify if rain or unusual conditions.
+If it's morning (before 10am), check London weather. Only notify if there is rain, snow, high wind, heat, ice, storm conditions, or another genuinely unusual/disruptive condition.
+
+Do NOT notify for normal overcast/cloudy conditions, ordinary cool temperatures, or generic “morning weather” summaries. If the weather is merely typical, say nothing and continue.
 
 ## 5. Quiet Hours
 

@@ -1,103 +1,103 @@
 {
   "project": "Cuiz AI",
   "project_id": "62966",
-  "generated_at": "2026-03-30T06:00:47.720088+00:00",
-  "generated_at_local": "2026-03-30 07:00 BST",
-  "latest_week": "2026-03-22",
-  "previous_week": "2026-03-15",
+  "generated_at": "2026-04-06T06:00:17.128629+00:00",
+  "generated_at_local": "2026-04-06 07:00 BST",
+  "latest_week": "2026-03-29",
+  "previous_week": "2026-03-22",
   "metrics": {
-    "wau_current": 37,
-    "wau_previous": 23,
-    "file_upload_users_current": 48,
-    "file_upload_users_previous": 39,
-    "quiz_generated_users_current": 39,
-    "quiz_generated_users_previous": 31,
-    "quiz_completed_users_current": 7,
-    "quiz_completed_users_previous": 5,
-    "logins_current": 7,
-    "logins_previous": 5,
-    "checkouts_current": 1,
-    "purchases_current": 1,
-    "new_revenue_current": 5.0,
-    "new_revenue_previous": 0,
+    "wau_current": 29,
+    "wau_previous": 37,
+    "file_upload_users_current": 5,
+    "file_upload_users_previous": 48,
+    "quiz_generated_users_current": 2,
+    "quiz_generated_users_previous": 39,
+    "quiz_completed_users_current": 1,
+    "quiz_completed_users_previous": 7,
+    "logins_current": 0,
+    "logins_previous": 7,
+    "checkouts_current": 0,
+    "purchases_current": 0,
+    "new_revenue_current": 0,
+    "new_revenue_previous": 5.0,
     "renewal_revenue_current": 5.0,
     "renewal_revenue_previous": 5.0,
-    "checkout_value_current": 5.0,
-    "checkout_value_previous": 0,
-    "wau_change": 60.86956521739131,
-    "file_upload_users_change": 23.076923076923077,
-    "quiz_generated_users_change": 25.806451612903224,
-    "quiz_completed_users_change": 40.0,
-    "new_revenue_change": null,
+    "checkout_value_current": 0,
+    "checkout_value_previous": 5.0,
+    "wau_change": -21.62162162162162,
+    "file_upload_users_change": -89.58333333333334,
+    "quiz_generated_users_change": -94.87179487179486,
+    "quiz_completed_users_change": -85.71428571428571,
+    "new_revenue_change": -100.0,
     "renewal_revenue_change": 0.0,
-    "checkout_value_change": null,
-    "total_revenue_current": 10.0,
-    "total_revenue_previous": 5.0,
-    "total_revenue_change": 100.0,
-    "quiz_completion_rate": 0.1794871794871795,
-    "checkout_rate": 0.02564102564102564,
-    "purchase_rate": 1.0
+    "checkout_value_change": -100.0,
+    "total_revenue_current": 5.0,
+    "total_revenue_previous": 10.0,
+    "total_revenue_change": -50.0,
+    "quiz_completion_rate": 0.5,
+    "checkout_rate": 0.0,
+    "purchase_rate": 0
   },
-  "assessment": "Stable",
-  "summary_text": "Cuiz AI is currently **stable**. Weekly active users are **37** (+60.9% vs previous week), file upload users are **48** (+23.1%), and quiz generation users are **39** (+25.8%). The biggest operational question is whether traffic/acquisition has cooled down permanently or whether the recent drop is a temporary lull.",
+  "assessment": "Needs attention",
+  "summary_text": "Cuiz AI is currently **needs attention**. Weekly active users are **29** (-21.6% vs previous week), file upload users are **5** (-89.6%), and quiz generation users are **2** (-94.9%). The biggest operational question is whether traffic/acquisition has cooled down permanently or whether the recent drop is a temporary lull.",
   "recommendations": [
-    "Activation: inspect the drop from quiz generated to quiz completed; this is the clearest product funnel leak.",
+    "Acquisition: identify what drove the February spike and whether that channel has gone quiet.",
     "Monetization: the pricing/paywall path is underperforming relative to product usage; review offer timing and pricing page exposure."
   ],
   "issues": [
-    "too few generated quizzes are being completed",
+    "core usage is shrinking",
     "monetization is weak relative to product usage"
   ],
   "top_pages": [
     {
       "label": "https://app.cuiz-ai.com/upload",
-      "value": 956
+      "value": 908
     },
     {
       "label": "https://app.cuiz-ai.com/quiz",
-      "value": 318
+      "value": 311
     },
     {
       "label": "https://app.cuiz-ai.com/",
-      "value": 315
+      "value": 296
     },
     {
       "label": "https://cuiz-ai.com/",
-      "value": 223
+      "value": 279
     },
     {
       "label": "https://app.cuiz-ai.com/dashboard",
-      "value": 167
+      "value": 159
     },
     {
       "label": "https://cuiz-ai.com/upload",
-      "value": 114
+      "value": 148
     },
     {
       "label": "https://cuiz-ai.com/quiz",
-      "value": 52
+      "value": 80
     },
     {
-      "label": "https://app.cuiz-ai.com/pricing",
-      "value": 45
+      "label": "https://cuiz-ai.com/dashboard",
+      "value": 46
     }
   ],
   "traffic_sources": [
     {
       "label": "www.cuiz-ai.com",
-      "value": 334
-    },
-    {
-      "label": "$direct",
-      "value": 98
+      "value": 308
     },
     {
       "label": "www.reddit.com",
-      "value": 91
+      "value": 109
+    },
+    {
+      "label": "$direct",
+      "value": 96
     },
     {
       "label": "www.google.com",
-      "value": 35
+      "value": 37
     },
     {
       "label": "chatgpt.com",
@@ -112,42 +112,42 @@
       "value": 7
     },
     {
-      "label": "l.facebook.com",
+      "label": "com.reddit.frontpage",
       "value": 4
     }
   ],
   "top_events": [
     {
       "label": "api_request",
-      "value": 37570
+      "value": 37541
     },
     {
       "label": "$autocapture",
-      "value": 21804
+      "value": 22143
     },
     {
       "label": "$pageview",
-      "value": 2422
+      "value": 2478
     },
     {
       "label": "$web_vitals",
-      "value": 1638
+      "value": 1651
     },
     {
       "label": "file_upload",
-      "value": 1273
-    },
-    {
-      "label": "quiz_generated",
-      "value": 919
+      "value": 1258
     },
     {
       "label": "flashcard_stats_viewed",
-      "value": 842
+      "value": 938
+    },
+    {
+      "label": "quiz_generated",
+      "value": 905
     },
     {
       "label": "$pageleave",
-      "value": 675
+      "value": 682
     },
     {
       "label": "$set",
@@ -155,34 +155,34 @@
     },
     {
       "label": "user_logged_in",
-      "value": 308
+      "value": 317
     }
   ],
   "custom_events": [
     {
       "label": "api_request",
-      "events": 37570,
-      "users": 23005
+      "events": 37541,
+      "users": 23219
     },
     {
       "label": "file_upload",
-      "events": 1273,
-      "users": 726
-    },
-    {
-      "label": "quiz_generated",
-      "events": 919,
-      "users": 522
+      "events": 1258,
+      "users": 719
     },
     {
       "label": "flashcard_stats_viewed",
-      "events": 842,
+      "events": 938,
       "users": 49
     },
     {
+      "label": "quiz_generated",
+      "events": 905,
+      "users": 513
+    },
+    {
       "label": "user_logged_in",
-      "events": 308,
-      "users": 88
+      "events": 317,
+      "users": 89
     },
     {
       "label": "flashcard_attempt",
@@ -191,106 +191,106 @@
     },
     {
       "label": "quiz_completed",
-      "events": 248,
+      "events": 238,
       "users": 76
     },
     {
       "label": "survey shown",
-      "events": 164,
-      "users": 147
+      "events": 161,
+      "users": 143
     },
     {
       "label": "referrer_captured",
-      "events": 160,
-      "users": 96
+      "events": 152,
+      "users": 91
     },
     {
-      "label": "survey dismissed",
-      "events": 74,
-      "users": 69
+      "label": "quiz_question_answered",
+      "events": 115,
+      "users": 8
     }
   ],
   "charts": {
     "weeks": [
-      "2026-02-01",
       "2026-02-08",
       "2026-02-15",
       "2026-02-22",
       "2026-03-01",
       "2026-03-08",
       "2026-03-15",
-      "2026-03-22"
+      "2026-03-22",
+      "2026-03-29"
     ],
     "series": {
       "wau": [
-        40,
         53,
         46,
         47,
         54,
         35,
         23,
-        37
+        37,
+        29
       ],
       "uploads": [
-        76,
         74,
         63,
         57,
         53,
         39,
         39,
-        48
+        48,
+        5
       ],
       "quizGenerated": [
-        54,
         60,
         54,
         42,
         17,
         26,
         31,
-        39
+        39,
+        2
       ],
       "quizCompleted": [
-        7,
         13,
         10,
         8,
         3,
         3,
         5,
-        7
+        7,
+        1
       ],
       "checkouts": [
-        1,
         1,
         3,
         1,
         1,
         0,
         0,
-        1
+        1,
+        0
       ],
       "purchases": [
-        1,
         0,
         1,
         1,
         0,
         0,
         0,
-        1
+        1,
+        0
       ],
       "revenue": [
-        15.0,
         0,
         15.0,
         15.0,
         10.0,
         0,
         5.0,
-        10.0
+        10.0,
+        5.0
       ]
     }
   }

@@ -34,12 +34,33 @@ You wake up fresh each session. These files are your continuity:
 ### Write it down — no "mental notes"!
 Memory doesn't survive sessions. If you want to remember it, write it to a file.
 
+## Report Format
+
+When delivering reports or findings:
+
+1. **TL;DR** — One-line summary of the most important thing
+2. **Key metrics** — The numbers that matter, with context
+3. **What's working** — Wins and positive trends
+4. **What needs attention** — Problems, drops, gaps
+5. **Recommendations** — Ranked by impact, with effort estimate
+
+## Plans Format
+
+When proposing improvement plans:
+
+1. **Goal** — What we're trying to achieve and why
+2. **Current state** — Where we are now (with data)
+3. **Proposed actions** — Numbered steps, each with expected impact
+4. **Effort estimate** — Small/Medium/Large for each action
+5. **Success metrics** — How we'll know it worked
+6. **Timeline suggestion** — When to check results
+
 ## Workflow
 
 ### When Nelson asks for a report:
 1. Query the relevant analytics platform(s)
 2. Compare against baselines and prior periods
-3. Structure findings using the report format in SOUL.md
+3. Structure findings using the report format above
 4. Deliver with clear recommendations
 
 ### When you spot something interesting:
@@ -48,7 +69,7 @@ Memory doesn't survive sessions. If you want to remember it, write it to a file.
 3. Present it with context and a suggested action
 
 ### When proposing a plan:
-1. Follow the plan format in SOUL.md
+1. Follow the plans format above
 2. Present to Nelson for review — don't execute
 3. Log the plan and its status in daily notes
 
